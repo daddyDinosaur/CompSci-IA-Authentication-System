@@ -21,11 +21,11 @@ const connectDB = require('./config/db');
 connectDB(app);
 
 // Routes
-app.use('/api/users', require('./api/users'));
-app.use('/api/security', require('./api/security'));
-app.use('/api/login', require('./api/login'));
-app.use('/api/register', require('./api/register'));
-app.use('/api/generate-key', require('./api/generate-key'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/security', require('./routes/security'));
+app.use('/api/login', require('./routes/login'));
+app.use('/api/register', require('./routes/register'));
+app.use('/api/generate-key', require('./routes/generate-key'));
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
