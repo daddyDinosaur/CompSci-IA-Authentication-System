@@ -27,6 +27,10 @@ app.use('/api/login', require('./routes/login'));
 app.use('/api/register', require('./routes/register'));
 app.use('/api/generate-key', require('./routes/generate-key'));
 
+// Models
+app.use('/models/user', require('./models/user'));
+app.use('/models/subKey', require('./models/subKey'));
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
