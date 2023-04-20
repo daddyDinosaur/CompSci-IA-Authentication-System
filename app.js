@@ -21,15 +21,12 @@ const connectDB = require('./config/db');
 connectDB(app);
 
 // Routes
-app.use('/api/users', require('./routes/users'));
+app.use('/api/user', require('./routes/user'));
 app.use('/api/security', require('./routes/security'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/register', require('./routes/register'));
-app.use('/api/generate-key', require('./routes/generate-key'));
-
-// Models
-app.use('/models/user', require('./models/user'));
-app.use('/models/subKey', require('./models/subKey'));
+app.use('/api/gen-key', require('./routes/gen-key'));
+app.use('/', require('./routes/main'));
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

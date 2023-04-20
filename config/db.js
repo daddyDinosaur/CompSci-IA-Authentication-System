@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const crypto = require('crypto');
+mongoose.set('strictQuery', false);
 
 const connectDB = async (app) => {
   try {
