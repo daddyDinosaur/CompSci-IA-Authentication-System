@@ -1,36 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <style>
-        body {
+        body, .flex-container {
             background-color: #1a1a1d;
             font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
-            justify-content: top;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        div[type="users"] {
-            background-color: #1a1a1d;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: top;
-            flex-direction: column;
-            height: 100vh;
-            width: 80%;
-        }
-
-        
-        div[id="user-container"] {
-            background-color: #1a1a1d;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: top;
             flex-direction: column;
             height: 100vh;
             width: 80%;
@@ -46,35 +24,28 @@
             justify-content: center;
         }
 
-        form input[type="text"] {
+        form input[type="text"], 
+        form button[type="submit"], 
+        button[name="moeInfo"], 
+        button[type="menu"] {
             margin: 0 10px;
             padding: 10px;
             border: none;
             border-radius: 5px;
             background-color: #6f2232;
             color: #fff;
+            cursor: pointer;
         }
 
-        form button[type="submit"], [name="moeInfo"] {
-            padding: 10px 20px;
+        form button[type="submit"], 
+        button[name="moeInfo"] {
             background-color: #950740;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            margin: 0 10px;
-            cursor: pointer;
         }
 
         button[type="menu"] {
             padding: 10px 50px;
-            background-color: #950740;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            margin: 0 10px;
             bottom: 10;
             left: 10;
-            cursor: pointer;
         }
 
         table {
@@ -85,18 +56,17 @@
         }
 
         table th,
-        table td, input[id="moreinf"] {
+        table td, 
+        input[id="moreinf"] {
             padding: 20px;
             background-color: #4e4e50;
             color: #fff;
-            width: 80%;
         }
 
         table th {
             padding: 25px;
             background-color: #c3073f;
-            width: 80%;
-        }
+        }    
 
         /* slider stuff */
         .slide-in {
@@ -126,8 +96,6 @@
             -webkit-transform: translateX(0);
         }
 
-
-        /* The Modal (background) */
         .modal {
             display: none; 
             position: fixed; 
@@ -141,7 +109,6 @@
             background-color: rgba(0,0,0,0.4); 
         }
 
-        /* Modal Content */
         .modal-content {
             position: absolute;
             top: 50%;
@@ -154,7 +121,6 @@
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
         }
 
-        /* The Close Button */
         .close {
             color: #aaaaaa;
             float: right;
@@ -196,10 +162,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- Slider stuff -->
-    <div id="header" style="position:absolute; top:0; left:0; right:0; height:90px; background-color:#4e4e50;"></div>
-    <h1 style="color: #c3073f; z-index: 10;">PLACEHOLDER</h1>
-    <button id="menutoggle" type="menu" style="position: absolute; top: 25px; left: 25px;">Menu</button>
-    </div>
+    <div id="header" class="header"></div>
+    <h1 class="placeholder-text">PLACEHOLDER</h1>
+    <button id="menutoggle" class="menutoggle">Menu</button>
     
     <div class="slide-in from-left">
         <div class="slide-in-content">
