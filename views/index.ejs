@@ -7,28 +7,63 @@
     <link rel="stylesheet" href="indexStyle.css">
 </head>
 <body>
-    <header class="header"></header>
-    <h1 class="title">PLACEHOLDER</h1>
-    <button id="menutoggle" class="menu-btn">Menu</button>
-
-    <div class="slide-in from-left" id="menu">
+    <div id="header" class="header"></div>
+    <h1 style="color: #c3073f; z-index: 10;">PLACEHOLDER</h1>
+    <button id="menutoggle" type="menu">Menu</button>
+    
+    <div class="slide-in from-left">
         <div class="slide-in-content">
             <ul>
-                <li><button id="usertoggle" class="menu-btn">Users</button></li>
-                <li><button id="btoggle" class="menu-btn">B</button></li>
-                <li><button id="ctoggle" class="menu-btn">C</button></li>
+                <button id="usertoggle" type="menu" style="position: absolute; top: 25px; left: 25px; padding-left: 25%; padding-right: 25%;">Users</button>
+                <button id="btoggle" type="menu" style="position: absolute; top: 75px; left: 25px; padding-left: 25%; padding-right: 25%;">B</button>
+                <button id="ctoggle" type="menu" style="position: absolute; top: 125px; left: 25px; padding-left: 25%; padding-right: 25%;">C</button>
             </ul>
         </div>
     </div>
 
-    <div id="users-container" class="users-container">
-        <!-- User code -->
+    <!-- User code -->
+    <div id="users-container" type="users">
+        <h1 style="color: #c3073f;">Users</h1>
+        <form action="/addUser" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="password" placeholder="Password">
+            <button type="submit">Add User</button>
+        </form>    
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Registered</th>
+                    <th>LastLogin</th>
+                    <th>UID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% users.forEach((user) => { %>
+                  <tr>
+                      <td><%= user.username %></td>
+                      <td><%= user.email %></td>
+                      <td><%= new Date(user.registered).toDateString() %></td>
+                      <td><%= new Date(user.lastLogin).toDateString() %></td>
+                      <td><%= user.id %></td>
+                      <td>
+                          <input type="hidden" name="userIdStorage" value="<%= user._id %>">
+                          <button name="moeInfo" id="modal-trigger-<%= user._id %>">More Info</button>
+                      </td>
+                  </tr>
+              <% }); %>
+          </tbody>
+        </table>
     </div>
-
+        <!-- The modal -->
     <div id="myModal" class="modal">
+        <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="modal-content"></p>
+        <span class="close">&times;</span>
+        <p id="modal-content"></p>
         </div>
     </div>
 
