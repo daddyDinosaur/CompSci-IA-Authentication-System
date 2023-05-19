@@ -1,328 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-    <style>
-        body, .flex-container {
-            background-color: #1a1a1d;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            width: 80%;
-        }
-
-        form {
-            background-color: #4e4e50;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-
-        form input[type="text"], 
-        form button[type="submit"], 
-        button[name="moeInfo"], 
-        button[type="menu"] {
-            margin: 0 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #6f2232;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        form button[type="submit"], 
-        button[name="moeInfo"] {
-            background-color: #950740;
-        }
-
-        button[type="menu"] {
-            padding: 10px 50px;
-            bottom: 10;
-            left: 10;
-        }
-
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            text-align: center;
-        }
-
-        table th,
-        table td, 
-        input[id="moreinf"] {
-            padding: 20px;
-            background-color: #4e4e50;
-            color: #fff;
-        }
-
-        table th {
-            padding: 25px;
-            background-color: #c3073f;
-        }    
-
-        /* slider stuff */
-        .slide-in {
-            z-index: 10;
-            position: absolute;
-            top: 90px;
-            left: 0px;
-            width: 250px;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .slide-in-content {
-            padding: 20px;
-            background: #4e4e50;
-            transition: transform .5s ease;
-            height: 100%;
-        }
-
-        .slide-in.from-left .slide-in-content {
-            transform: translateX(-100%);
-            -webkit-transform: translateX(-100%);
-        }
-
-        .slide-in.show .slide-in-content {
-            transform: translateX(0);
-            -webkit-transform: translateX(0);
-        }
-
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #4e4e50;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        }
-
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .buttons-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        }
-
-        .button {
-        width: 100%;
-        height: 50px;
-        background-color: #4e4e50;
-        color: #fff;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-        }
-
-        .button:hover {
-        background-color: #c3073f;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <header class="header"></header>
+    <h1 class="title">PLACEHOLDER</h1>
+    <button id="menutoggle" class="menu-btn">Menu</button>
 
-    <!-- Slider stuff -->
-    <div id="header" class="header"></div>
-    <h1 style="color: #c3073f; z-index: 10;">PLACEHOLDER</h1>
-    <button id="menutoggle" type="menu">Menu</button>
-    
-    <div class="slide-in from-left">
+    <div class="slide-in from-left" id="menu">
         <div class="slide-in-content">
             <ul>
-                <button id="usertoggle" type="menu" style="position: absolute; top: 25px; left: 25px; padding-left: 25%; padding-right: 25%;">Users</button>
-                <button id="btoggle" type="menu" style="position: absolute; top: 75px; left: 25px; padding-left: 25%; padding-right: 25%;">B</button>
-                <button id="ctoggle" type="menu" style="position: absolute; top: 125px; left: 25px; padding-left: 25%; padding-right: 25%;">C</button>
+                <li><button id="usertoggle" class="menu-btn">Users</button></li>
+                <li><button id="btoggle" class="menu-btn">B</button></li>
+                <li><button id="ctoggle" class="menu-btn">C</button></li>
             </ul>
         </div>
     </div>
 
-    <!-- User code -->
-    <div id="users-container" type="users">
-        <h1 style="color: #c3073f;">Users</h1>
-        <form action="/addUser" method="post">
-            <input type="text" name="username" placeholder="Username">
-            <input type="text" name="email" placeholder="Email">
-            <input type="text" name="password" placeholder="Password">
-            <button type="submit">Add User</button>
-        </form>    
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Registered</th>
-                    <th>LastLogin</th>
-                    <th>UID</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-              <% users.forEach((user) => { %>
-                  <tr>
-                      <td><%= user.username %></td>
-                      <td><%= user.email %></td>
-                      <td><%= new Date(user.registered).toDateString() %></td>
-                      <td><%= new Date(user.lastLogin).toDateString() %></td>
-                      <td><%= user.id %></td>
-                      <td>
-                          <input type="hidden" name="userIdStorage" value="<%= user._id %>">
-                          <button name="moeInfo" id="modal-trigger-<%= user._id %>">More Info</button>
-                      </td>
-                  </tr>
-              <% }); %>
-          </tbody>
-        </table>
+    <div id="users-container" class="users-container">
+        <!-- User code -->
     </div>
-        <!-- The modal -->
+
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modal-content"></p>
+            <span class="close">&times;</span>
+            <p id="modal-content"></p>
         </div>
     </div>
 
-    <!-- Script -->
-    <script>
-        <% if(alertMessage != null) { %>
-            const message = '<%= alertMessage %>';
-            if (message) {
-                alert(message);
-            }
-        <% } %>
-
-        $("#usertoggle").click(function() {
-            $("#users-container").toggle();
-        });
-
-        $('#menutoggle').click(function() {
-            $('.slide-in').toggleClass('show');
-        });
-
-        const modal = document.getElementById("myModal");
-
-        const close = document.getElementsByClassName("close")[0];
-        
-        <% users.forEach((user) => { %>
-            document.getElementById("modal-trigger-<%= user._id %>").onclick = function() {
-                modal.style.display = "block";
-                let uid = this.parentNode.querySelector('input[name="userIdStorage"]').value;
-                document.getElementById("modal-content").innerHTML = 
-                `<form action="/updateUser" method="post">
-                    <div class="more-info-container">
-                        <table>
-                        <thead>
-                            <tr>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>ID</th>
-                            <th>HWID</th>
-                            <th>Last IP</th>
-                            <th>Banned</th>
-                            <th>Subscription</th>
-                            <th>Expiry</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <input type="hidden" name="id" value="<%= user._id %>">
-                            <td><input id="moreinfoa" name="newUsername" value=<%= user.username %>></td>
-                            <td><input id="moreinfoh" name="newEmail" value=<%= user.email %>></td>
-                            <td><input id="moreinfob" name="newPass" value="NewPassword"></td>
-                            <td><%= user._id %></td>
-                            <td><%= user.hwid %></td>
-                            <td><%= user.lastIP %></td>
-                            <td><%= user.banned %></td>
-                            <td><%= user.subscription %></td>
-                            <td><%= user.expiry %></td>
-                            </tr>
-                        </tbody>
-                        </table>
-                        <div class="buttons-container">
-                            <button type="submit" class="button">Update User</button>
-                            <form action="/delUser" method="post">
-                                <input type="hidden" name="id" value="<%= user._id %>">
-                                <button type="submit" class="button">Delete</button>
-                            </form>
-                            <form action="/updateBanned" method="post">
-                                <input type="hidden" name="id" value="<%= user._id %>">
-                                <input type="hidden" name="bannedValue" value=<%= user.banned %>>
-                                <button type="submit" class="button">
-                                <% if (user.banned) { %>
-                                    Unban
-                                <% } else { %>
-                                    Ban
-                                <% } %>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    </form>`;
-            }
-        <% }); %>
-         
-        close.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>     
+    <script src="script.js"></script>
 </body>
-</html> 
-
-<!--
-    // const form = document.querySelector("form");
-    // const banButton = document.querySelector("#ban-button");
-    // const bannedValue = document.querySelector("#banned");
-
-    // banButton.addEventListener("click", function(event) {
-    //     event.preventDefault();
-    //     bannedValue.value = bannedValue.value === true ? false : true;
-    //     bannedValue.value = false;
-    //     form.submit();
-    // }); -->
+</html>
