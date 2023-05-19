@@ -14,7 +14,6 @@ $(document).ready(function() {
         modal.css("display", "block");
         let uid = $(this).parent().find('input[name="userIdStorage"]').val();
 
-        // You should modify this AJAX call to retrieve user info from server
         // $.ajax({
         //     url: "/getUserInfo",
         //     type: "POST",

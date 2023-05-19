@@ -20,7 +20,7 @@ form {
 
 form input[type="text"], 
 form button[type="submit"], 
-button[name="moeInfo"], 
+button[name="moreInfo"], 
 button[type="menu"] {
     margin: 0 10px;
     padding: 10px;
