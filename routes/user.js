@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const app = require('../app');
+const security = require('./security');
 
 router.get('/api/user', security, async (req, res) => {
     const users = await User.find().sort('name');
