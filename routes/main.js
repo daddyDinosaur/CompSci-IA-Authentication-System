@@ -4,9 +4,9 @@ const User = require('../models/user');
 const security = require('./security');
 
 router.get('/', security, async (req, res) => {
-    const users = await User.find().sort('name');
-    console.log(users);
-    res.render('index', { users });
+    return res.status(401).json({ message: 'Testing' });
+    // const users = await User.find().sort('name');
+    // res.render('index', { users });
 });
 
 module.exports = router;
