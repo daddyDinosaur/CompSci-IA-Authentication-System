@@ -25,8 +25,6 @@ const privateKey = fs.readFileSync('./private.pem', 'utf8');
 const publicKey = fs.readFileSync('./public.pem', 'utf8');
 app.set('privSecret', privateKey);
 app.set('pubSecret', publicKey);
-privateKey = "";
-publicKey = "";
 
 // Routes
 app.use('/api/user', require('./routes/user'));
