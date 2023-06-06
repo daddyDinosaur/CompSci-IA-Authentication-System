@@ -5,7 +5,7 @@ const security = require('./security');
 
 router.get('/', security, async (req, res) => {
     const users = await User.find().sort('name');
-    console.error("Test");
+    console.log(users);
     res.render('index', { users });
 });
 
