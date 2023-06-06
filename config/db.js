@@ -3,6 +3,9 @@ const fs = require('fs');
 const crypto = require('crypto');
 mongoose.set('strictQuery', false);
 
+let privateKey = null;
+let publicKey = null;
+
 const readOrCreateKeys = (app) => {
   if (!fs.existsSync('./private.pem') || !fs.existsSync('./public.pem')) {
     const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
@@ -20,13 +23,11 @@ const readOrCreateKeys = (app) => {
     });
     fs.writeFileSync('private.pem', privateKey);
     fs.writeFileSync('public.pem', publicKey);
-    app.set('privSecret', privateKey);
-    app.set('pubSecret', publicKey);
+    privateKey = genPrivateKey;
+    publicKey = genPublicKey;
   } else {
-    const privateKey = fs.readFileSync('./private.pem', 'utf8');
-    const publicKey = fs.readFileSync('./public.pem', 'utf8');
-    app.set('privSecret', privateKey);
-    app.set('pubSecret', publicKey);
+    privateKey = fs.readFileSync('./private.pem', 'utf8');
+    publicKey = fs.readFileSync('./public.pem', 'utf8');
   }
 }
 
@@ -46,4 +47,4 @@ const connectDB = async (app) => {
   }
 }
 
-module.exports = connectDB;
+module.exports = { connectDB, privateKey, publicKey };
