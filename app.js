@@ -22,12 +22,12 @@ const connectDB = require('./config/db');
 connectDB(app);
 
 // Routes
-app.use('/api/user', require('./routes/user'));
-app.use('/api/security', require('./routes/security'));
-app.use('/api/login', require('./routes/login'));
-app.use('/api/register', require('./routes/register'));
-app.use('/api/gen-key', require('./routes/gen-key'));
-app.use('/', require('./routes/main'));
+app.use('/api/user', require('./routes/user')(app));
+app.use('/api/security', require('./routes/security')(app));
+app.use('/api/login', require('./routes/login')(app));
+app.use('/api/register', require('./routes/register')(app));
+app.use('/api/gen-key', require('./routes/gen-key')(app));
+app.use('/', require('./routes/main')(app));
 
 
 const PORT = process.env.PORT;
