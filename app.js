@@ -22,7 +22,8 @@ const connectDB = require('./config/db');
 connectDB(app);
 
 // Routes
-app.use('/api/user', require('./routes/user')(app));
+const userRoute = require('./routes/user');
+app.use('/api/user', userRoute(app));
 app.use('/api/security', require('./routes/security')(app));
 app.use('/api/login', require('./routes/login')(app));
 app.use('/api/register', require('./routes/register')(app));
