@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const crypto = require('crypto');
 mongoose.set('strictQuery', false);
+const app = require('../app');
 
 const readOrCreateKeys = (app) => {
   if (!fs.existsSync('./private.pem') || !fs.existsSync('./public.pem')) {
