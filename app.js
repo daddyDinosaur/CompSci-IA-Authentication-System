@@ -18,7 +18,7 @@ app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
 // Database
-const connectDB = require('./config/db');
+const connectDB = require('./config/db').connectDB;
 connectDB(app);
 
 // Routes
