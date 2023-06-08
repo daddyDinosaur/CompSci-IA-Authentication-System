@@ -31,16 +31,22 @@ const startApp = async () => {
     process.env.PUB_KEY_PATH = './public.pem';
   
     // Routes
-    const userRoutes = require('./routes/user');
-    const loginRoutes = require('./routes/login');
-    const registerRoutes = require('./routes/register');
-    const genKeyRoutes = require('./routes/gen-key');
-    const mainRoutes = require('./routes/main');
+    const userApiRoutes = require('./routes/api/user');
+    const loginApiRoutes = require('./routes/api/login');
+    const registerApiRoutes = require('./routes/api/register');
+    const genKeyApiRoutes = require('./routes/api/gen-key');
   
     app.use('/api/users', userRoutes);
     app.use('/api/login', loginRoutes);
     app.use('/api/register', registerRoutes);
     app.use('/api/gen-key', genKeyRoutes);
+
+    const loginRoutes = require('./routes/web/login');
+    const registerRoutes = require('./routes/web/register');
+    const mainRoutes = require('./routes/web/main');
+  
+    app.use('/login', loginRoutes);
+    app.use('/register', registerRoutes);
     app.use('/', mainRoutes);
   
     // Start serv
