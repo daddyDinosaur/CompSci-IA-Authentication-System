@@ -32,14 +32,12 @@ const startApp = async () => {
   
     // Routes
     const userRoutes = require('./routes/user');
-    const securityRoutes = require('./routes/security');
     const loginRoutes = require('./routes/login');
     const registerRoutes = require('./routes/register');
     const genKeyRoutes = require('./routes/gen-key');
     const mainRoutes = require('./routes/main');
   
     app.use('/api/users', userRoutes);
-    app.use('/api/security', securityRoutes);
     app.use('/api/login', loginRoutes);
     app.use('/api/register', registerRoutes);
     app.use('/api/gen-key', genKeyRoutes);
