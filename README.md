@@ -11,3 +11,5 @@ https://www.youtube.com/watch?v=fgTGADljAeg&t=88s&ab_channel=WebDevSimplified
 https://chat.openai.com
 
 https://stackoverflow.com/questions/45207104/how-to-set-jwt-token-expiry-time-to-maximum-in-nodejs
+
+https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
