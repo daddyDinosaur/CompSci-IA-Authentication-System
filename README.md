@@ -9,3 +9,5 @@ https://www.youtube.com/watch?v=bhiEJW5poHU&ab_channel=ArpanNeupane
 https://www.youtube.com/watch?v=fgTGADljAeg&t=88s&ab_channel=WebDevSimplified
 
 https://chat.openai.com
+
+https://stackoverflow.com/questions/45207104/how-to-set-jwt-token-expiry-time-to-maximum-in-nodejs
