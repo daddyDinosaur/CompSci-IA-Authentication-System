@@ -16,7 +16,7 @@ const readOrCreateKeys = (app) => {
         type: 'pkcs8',
         format: 'pem',
         cipher: 'aes-256-cbc',
-        passphrase: process.env.PASSPHRASE 
+        passphrase: process.env.PASSPHRASE
       }
     });
     fs.writeFileSync('private.pem', privateKey);
