@@ -8,6 +8,8 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
 router.get('/', async (req, res) => {
     try {
+        console.log(req.query);
+
         const { email, password } = req.query;
 
         const user = await User.findOne({ email: email });
