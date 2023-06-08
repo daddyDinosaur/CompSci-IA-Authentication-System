@@ -11,7 +11,7 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 router.get('/', security, async (req, res) => {
     try {
         const theUsers = await User.find();
-        const encrpyUsers = jwt.sign({ users: theUsers }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '5m' });
+        const encrpyUsers = jwt.sign({ users: theUsers }, { key: privateKey, passphrase: process.env.passphrase }, { algorithm: 'RS256', expiresIn: '5m' });
         res.json(encrpyUsers);
     } catch (err) {
         console.error(err);
