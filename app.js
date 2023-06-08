@@ -21,18 +21,26 @@ app.set('view engine', 'ejs');
 const connectDB = require('./config/db');
 connectDB(app);
 
+// Load private and public keys
 const privateKey = fs.readFileSync('./private.pem', 'utf8');
 const publicKey = fs.readFileSync('./public.pem', 'utf8');
-app.set('privSecret', privateKey);
-app.set('pubSecret', publicKey);
+process.env.PRIV_SECRET = privateKey; 
 
 // Routes
-app.use('/api/user', require('./routes/user'));
-app.use('/api/security', require('./routes/security'));
-app.use('/api/login', require('./routes/login'));
-app.use('/api/register', require('./routes/register'));
-app.use('/api/gen-key', require('./routes/gen-key'));
-app.use('/', require('./routes/main'));
+const userRoutes = require('./routes/user');
+const securityRoutes = require('./routes/security');
+const loginRoutes = require('./routes/login');
+const registerRoutes = require('./routes/register');
+const genKeyRoutes = require('./routes/gen-key');
+const mainRoutes = require('./routes/main');
+
+app.use('/api/user', userRoutes);
+app.use('/api/security', securityRoutes);
+app.use('/api/login', loginRoutes);
+app.use('/api/register', registerRoutes);
+app.use('/api/gen-key', genKeyRoutes);
+app.use('/', mainRoutes);
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
