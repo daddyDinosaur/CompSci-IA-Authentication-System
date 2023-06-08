@@ -39,8 +39,7 @@ router.get('/', async (req, res) => {
         };
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
-        await User.findOneAndUpdate({_id: user._id}, {$set: {lastLogin: Date.now()}})
-        await User.findOneAndUpdate({_id: user._id}, {$set: {lastIP: ip}})
+        await User.findOneAndUpdate({ _id: user._id }, { $set: { lastLogin: Date.now(), lastIP: ip } });
 
         const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
