@@ -21,13 +21,6 @@ const readOrCreateKeys = (app) => {
     });
     fs.writeFileSync('private.pem', privateKey);
     fs.writeFileSync('public.pem', publicKey);
-    app.set('privSecret', privateKey);
-    app.set('pubSecret', publicKey);
-  } else {
-    const privateKey = fs.readFileSync('./private.pem', 'utf8');
-    const publicKey = fs.readFileSync('./public.pem', 'utf8');
-    app.set('privSecret', privateKey);
-    app.set('pubSecret', publicKey);
   }
 }
 

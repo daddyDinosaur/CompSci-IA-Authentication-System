@@ -21,6 +21,11 @@ app.set('view engine', 'ejs');
 const connectDB = require('./config/db');
 connectDB(app);
 
+const privateKey = fs.readFileSync('./private.pem', 'utf8');
+const publicKey = fs.readFileSync('./public.pem', 'utf8');
+app.set('privSecret', privateKey);
+app.set('pubSecret', publicKey);
+
 // Routes
 app.use('/api/user', require('./routes/user'));
 app.use('/api/security', require('./routes/security'));
@@ -28,7 +33,6 @@ app.use('/api/login', require('./routes/login'));
 app.use('/api/register', require('./routes/register'));
 app.use('/api/gen-key', require('./routes/gen-key'));
 app.use('/', require('./routes/main'));
-
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
