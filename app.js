@@ -20,27 +20,29 @@ app.set('view engine', 'ejs');
 // Database
 const connectDB = require('./config/db');
 
-//Start app
+// Start app
 const startApp = async () => {
   try {
-    //Wait for DB
+    // Wait for DB
     await connectDB(app);
     
-    //Store key
+    // Store key
     process.env.PRIV_KEY_PATH = './private.pem';
     process.env.PUB_KEY_PATH = './public.pem';
   
     // Routes
+    // Api
     const userApiRoutes = require('./routes/api/user');
     const loginApiRoutes = require('./routes/api/login');
     const registerApiRoutes = require('./routes/api/register');
     const genKeyApiRoutes = require('./routes/api/gen-key');
   
-    app.use('/api/users', userRoutes);
-    app.use('/api/login', loginRoutes);
-    app.use('/api/register', registerRoutes);
-    app.use('/api/gen-key', genKeyRoutes);
+    app.use('/api/users', userApiRoutes);
+    app.use('/api/login', loginApiRoutes);
+    app.use('/api/register', registerApiRoutes);
+    app.use('/api/gen-key', genKeyApiRoutes);
 
+    // Api
     const loginRoutes = require('./routes/web/login');
     const registerRoutes = require('./routes/web/register');
     const mainRoutes = require('./routes/web/main');
