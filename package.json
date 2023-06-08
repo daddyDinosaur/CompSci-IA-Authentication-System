@@ -1,5 +1,5 @@
 {
-    "name": "Mongo-Node-Auth",
+    "name": "authserv",
     "version": "1.0.0",
     "description": "super cool description",
     "main": "app.js",
