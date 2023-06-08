@@ -22,7 +22,8 @@ const connectDB = require('./config/db');
 connectDB(app);
 
 // Load private and public keys
-const privateKey = fs.readFileSync('./private.pem', 'utf8');
+const privateKey = { key: fs.readFileSync('./private.pem', 'utf8'), passphrase: process.env.PASSPHRASE };
+
 const publicKey = fs.readFileSync('./public.pem', 'utf8');
 process.env.PRIV_SECRET = privateKey; 
 
