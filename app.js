@@ -28,6 +28,7 @@ const startApp = async () => {
     
     //Store key
     process.env.PRIV_KEY_PATH = './private.pem';
+    process.env.PUB_KEY_PATH = './public.pem';
   
     // Routes
     const userRoutes = require('./routes/user');
@@ -37,7 +38,7 @@ const startApp = async () => {
     const genKeyRoutes = require('./routes/gen-key');
     const mainRoutes = require('./routes/main');
   
-    app.use('/api/user', userRoutes);
+    app.use('/api/users', userRoutes);
     app.use('/api/security', securityRoutes);
     app.use('/api/login', loginRoutes);
     app.use('/api/register', registerRoutes);
