@@ -27,8 +27,7 @@ const startApp = async () => {
     await connectDB(app);
     
     //Store key
-    const privateKey = { key: fs.readFileSync('./private.pem', 'utf8'), passphrase: process.env.PASSPHRASE };
-    process.env.PRIV_SECRET = privateKey;
+    process.env.PRIV_KEY_PATH = './private.pem';
   
     // Routes
     const userRoutes = require('./routes/user');
