@@ -7,4 +7,4 @@ const subKeySchema = new mongoose.Schema(
 
 const SubKey = mongoose.model('subKey', subKeySchema);
 
-module.exports = SubKey;
+module.exports = { SubKey };

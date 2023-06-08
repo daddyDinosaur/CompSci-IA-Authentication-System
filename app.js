@@ -43,7 +43,6 @@ const startApp = async () => {
     app.use('/api/gen-key', genKeyRoutes);
     app.use('/', mainRoutes);
   
-  
     // Start serv
     const PORT = process.env.PORT;
     app.listen(PORT, () => {
