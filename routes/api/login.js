@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
             email: user.email,
         };
 
-        const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '5m' });
+        const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
         res.status(200).json({ token: token })
     } catch (err) {

@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
 
 const publicKey = fs.readFileSync(process.env.PUB_KEY_PATH, 'utf8');
 
@@ -12,7 +13,7 @@ const checkApiKey = async (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized No Token' });
     }
     try {
-        const decoded = jwt.verify(token, publicKey , { algorithms: 'RS256' });
+        const decoded = jwt.verify(token, publicKey, { algorithms: 'RS256' });
         
         const user = await User.findById(decoded.userId);
 
@@ -22,6 +23,7 @@ const checkApiKey = async (req, res, next) => {
 
         next();
     } catch (err) {
+        console.error(err);
         return res.status(401).json({ message: 'Unauthorized' });
     }
 };

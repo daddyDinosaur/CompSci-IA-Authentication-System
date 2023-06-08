@@ -8,9 +8,13 @@ const jwt = require('jsonwebtoken');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
+    res.render('login');
+});
+
+router.post('/', async (req, res) => {
     try {
-        const { email, password } = req.query;
+        const { email, password } = req.body;
 
         const user = await User.findOne({ email: email });
 
@@ -23,7 +27,7 @@ router.get('/', async (req, res) => {
             email: user.email,
         };
 
-        const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '5m' });
+        const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
         res.cookie('authToken', token, { httpOnly: true });
 
