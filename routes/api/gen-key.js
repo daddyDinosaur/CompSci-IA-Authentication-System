@@ -4,7 +4,7 @@ const { SubKey } = require('../../models/subKey');
 const security = require('./security');
 const jwt = require('jsonwebtoken');
 
-router.get('/api/genKey', security, async (req, res) => {
+router.get('/', security, async (req, res) => {
     try {
         const pattern = req.query.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
