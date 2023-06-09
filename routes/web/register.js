@@ -2,11 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
-const security = require('./security');
-const mongoose = require("mongoose");
-const jwt = require('jsonwebtoken');
-
-const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
+const fs = require('fs');
 
 router.get('/', (req, res) => {
     res.render('register');
