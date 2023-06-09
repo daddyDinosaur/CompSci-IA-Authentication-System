@@ -24,6 +24,21 @@ router.get('/', async (req, res) => {
             return;
         }
 
+        const foundKey = await SubKey.findOne({ key });
+        if (!foundKey) {
+            res.send('Invalid Key.');
+            return;
+        }
+
+        var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+        const bannedIP = await User.findOne({$and: [{ lastIP: ip }, { banned: true }]});
+
+        if (bannedIP) {
+            res.send('IP Banned.');
+            return;
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = new User({
@@ -33,6 +48,8 @@ router.get('/', async (req, res) => {
             registered: Date.now(),
             keys: key,
         });
+
+        await SubKey.findOneAndRemove({ key });
     
         await user.save();
 

@@ -10,7 +10,7 @@ const publicKey = fs.readFileSync(process.env.PUB_KEY_PATH, 'utf8');
 const checkApiKey = async (req, res, next) => {
     const token = req.cookies.authToken;
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized No Token' });
+        return res.status(401).json({ Unauthorized: 'No Token' });
     }
     try {
         const decoded = jwt.verify(token, publicKey, { algorithms: 'RS256' });
@@ -18,13 +18,22 @@ const checkApiKey = async (req, res, next) => {
         const user = await User.findById(decoded.userId);
 
         if (!user) {
-            return res.status(401).json({ message: 'Unauthorized Invalid User' });
+            return res.status(401).json({ Unauthorized: 'Invalid User' });
+        }
+
+        var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+        const bannedIP = await User.findOne({$and: [{ lastIP: ip }, { banned: true }]});
+
+        if (bannedIP) {
+            res.send('IP Banned.');
+            return;
         }
 
         next();
     } catch (err) {
         console.error(err);
-        return res.status(401).json({ message: 'Unauthorized' });
+        res.status(500).json({ error: 'An error occurred' });
     }
 };
 
