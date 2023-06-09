@@ -17,6 +17,14 @@ router.get('/', async (req, res) => {
             return;
         }
 
+        const emailExist = await User.findOne({email: email});
+        const userExist = await User.findOne({username: username});
+        
+        if (emailExist || userExist) {
+            res.send('User Already Exists.');
+            return;
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = new User({
