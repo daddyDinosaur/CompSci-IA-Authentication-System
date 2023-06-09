@@ -4,6 +4,8 @@ const { SubKey } = require('../../models/subKey');
 const security = require('./security');
 const jwt = require('jsonwebtoken');
 
+const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
+
 router.get('/', security, async (req, res) => {
     try {
         const pattern = req.query.pattern;
