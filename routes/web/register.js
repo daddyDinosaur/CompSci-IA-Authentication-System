@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
-const { SubKey } = require('../../models/subkey');
+const { SubKey } = require('../../models/subKey');
 
 router.get('/', (req, res) => {
     res.render('register');
