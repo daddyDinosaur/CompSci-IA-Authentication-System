@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
-const fs = require('fs');
+const { SubKey } = require('../../models/subkey');
 
 router.get('/', async (req, res) => {
     try {
