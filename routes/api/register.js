@@ -17,10 +17,9 @@ router.get('/', async (req, res) => {
             return;
         }
 
-        const emailExist = await User.findOne({email: email});
-        const userExist = await User.findOne({username: username});
+        const userExists = await User.findOne({$or: [{ email: email }, { username: username }]});
         
-        if (emailExist || userExist) {
+        if (userExists) {
             res.send('User Already Exists.');
             return;
         }
