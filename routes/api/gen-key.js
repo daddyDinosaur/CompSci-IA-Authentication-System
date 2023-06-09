@@ -3,6 +3,7 @@ const router = express.Router();
 const { SubKey } = require('../../models/subKey');
 const security = require('./security');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
