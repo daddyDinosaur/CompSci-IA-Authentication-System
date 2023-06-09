@@ -10,7 +10,7 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
 router.get('/', async (req, res) => {
     try {
-        const { username, email, password, key } = req.body;
+        const { username, email, password, key } = req.query;
 
         if (!username || !email || !password || !key) {
             res.send('Missing Data.');
@@ -59,8 +59,5 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: 'An error occurred' });
     }
 });
-
-module.exports = router;
-
 
 module.exports = router;
