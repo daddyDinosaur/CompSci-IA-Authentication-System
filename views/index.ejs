@@ -3,33 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Users</title> -->
     <link rel="stylesheet" href="indexStyle.css">
 </head>
 <body>
     <div id="header" class="header"></div>
-    <h1 style="color: #c3073f; z-index: 10;">PLACEHOLDER</h1>
-    <button id="menutoggle" type="menu">Menu</button>
+    <h1 class="title">PLACEHOLDER</h1>
+    <button id="menutoggle" class="menu-button">Menu</button>
     
     <div class="slide-in from-left">
         <div class="slide-in-content">
-            <ul>
-                <button id="usertoggle" type="menu" style="position: absolute; top: 25px; left: 25px; padding-left: 25%; padding-right: 25%;">Users</button>
-                <button id="btoggle" type="menu" style="position: absolute; top: 75px; left: 25px; padding-left: 25%; padding-right: 25%;">B</button>
-                <button id="ctoggle" type="menu" style="position: absolute; top: 125px; left: 25px; padding-left: 25%; padding-right: 25%;">C</button>
-            </ul>
+            <button id="usertoggle" class="menu-button">Users</button>
+            <button id="btoggle" class="menu-button">B</button>
+            <button id="ctoggle" class="menu-button">C</button>
         </div>
     </div>
 
-    <!-- User code -->
-    <div id="users-container" type="users">
-        <h1 style="color: #c3073f; text-align: center;">Users</h1>
+    <div id="users-container" class="users">
+        <h1 class="title centered-text">Users</h1>
         <form action="/addUser" method="post">
-            <input type="text" name="username" placeholder="Username">
-            <input type="text" name="email" placeholder="Email">
-            <input type="text" name="password" placeholder="Password">
-            <button type="submit">Add User</button>
-        </form>    
+            <input class="input-field" type="text" name="username" placeholder="Username">
+            <input class="input-field" type="text" name="email" placeholder="Email">
+            <input class="input-field" type="text" name="password" placeholder="Password">
+            <button class="submit-button" type="submit">Add User</button>
+        </form>   
         <table>
             <thead>
                 <tr>
@@ -58,9 +54,7 @@
           </tbody>
         </table>
     </div>
-        <!-- The modal -->
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
         <span class="close">&times;</span>
         <p id="modal-content"></p>

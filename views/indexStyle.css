@@ -6,9 +6,16 @@ body, .flex-container {
     flex-direction: column;
     height: 100vh;
     width: 100%; 
+    justify-content: center;
 }
 
-form {
+.title {
+    color: #c3073f;
+    z-index: 10;
+    text-align: center;
+}
+
+.form {
     background-color: #4e4e50;
     padding: 20px;
     border-radius: 10px;
@@ -18,10 +25,10 @@ form {
     justify-content: center;
 }
 
-form input[type="text"], 
-form button[type="submit"], 
-button[name="moreInfo"], 
-button[type="menu"] {
+.input-field, 
+.submit-button, 
+.more-info, 
+.menu-button {
     margin: 0 10px;
     padding: 10px;
     border: none;
@@ -31,15 +38,16 @@ button[type="menu"] {
     cursor: pointer;
 }
 
-form button[type="submit"], 
-button[name="moeInfo"] {
+.submit-button, 
+.more-info {
     background-color: #950740;
 }
 
-button[type="menu"] {
+.menu-button {
+    position: absolute;
     padding: 10px 50px;
-    bottom: 10;
-    left: 10;
+    bottom: 10px;
+    left: 10px;
 }
 
 table {
@@ -62,7 +70,6 @@ table th {
     background-color: #c3073f;
 }    
 
-/* slider stuff */
 .slide-in {
     z-index: 10;
     position: absolute;
@@ -99,7 +106,6 @@ table th {
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
 }
 
@@ -130,22 +136,22 @@ table th {
 }
 
 .buttons-container {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .button {
-width: 100%;
-height: 50px;
-background-color: #4e4e50;
-color: #fff;
-font-size: 18px;
-border: none;
-cursor: pointer;
+    width: 100%;
+    height: 50px;
+    background-color: #4e4e50;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
 }
 
 .button:hover {
-background-color: #c3073f;
+    background-color: #c3073f;
 }
