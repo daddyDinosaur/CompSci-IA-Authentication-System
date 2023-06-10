@@ -38,13 +38,12 @@ router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
 
     let query = {};
 
-    if(username){
-        query.username = username;
-    }
     if(id){
         query._id = id;
+    } else if(username) {
+        query.username = username;
     }
-
+    
     try {
         const user = await User.findOneAndDelete(query, {useFindAndModify: false});
         
