@@ -1,7 +1,10 @@
 $(document).ready(function() {
-    $("#usertoggle, #menutoggle").click(function() {
-        $("#" + $(this).attr("id").replace("toggle", "") + "-container").toggle();
+    $("#menutoggle").click(function() {
         $('.slide-in').toggleClass('show');
+    });
+
+    $("#usertoggle").click(function() {
+        $("#users-container").toggle();
     });
 
     const modal = $("#myModal");
@@ -10,7 +13,7 @@ $(document).ready(function() {
     $(".more-info").click(function() {
         modal.css("display", "block");
         let uid = $(this).data("user-id");
-
+        
         // $.ajax({
         //     url: "/getUserInfo",
         //     type: "POST",
