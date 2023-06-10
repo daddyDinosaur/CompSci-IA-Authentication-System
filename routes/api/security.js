@@ -67,7 +67,7 @@ function isAdmin(req, res, next) {
     
     try {
         const decoded = jwt.verify(token, publicKey);
-        if(decoded.role !== 'admin') return res.status(403).send('Access Denied. You are not authorized to perform this operation.');
+        if(decoded.role !== 'admin') return res.status(403).json({ unauthorized: 'Access Denied. You are not authorized to perform this operation.'});
         next();
     } catch (err) {
         console.error(err);

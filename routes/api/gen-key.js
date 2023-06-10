@@ -7,11 +7,13 @@ const fs = require('fs');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-router.get('/', checkApiKey, isAdmin, async (req, res) => {
+router.get('/', checkApiKey, async (req, res) => {
     try {
         const pattern = req.query.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let newString = "";
+
+        let role = pattern.includes("ADMIN") ? "admin" : "user";
         
         for (let i = 0; i < pattern.length; i++) {
             if (pattern[i] === "X") {
@@ -20,7 +22,8 @@ router.get('/', checkApiKey, isAdmin, async (req, res) => {
                 newString += pattern[i];
             }
         }
-        const daprog = new SubKey({ key: newString });
+        
+        const daprog = new SubKey({ key: newString, role: role });
         await daprog.save();
         
         const encrpyUsers = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: '1h' });
