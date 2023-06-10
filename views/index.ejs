@@ -20,12 +20,14 @@
 
     <div id="users-container" class="users">
         <h1 class="title centered-text">Users</h1>
-        <form action="/addUser" method="post">
-            <input class="input-field" type="text" name="username" placeholder="Username">
-            <input class="input-field" type="text" name="email" placeholder="Email">
-            <input class="input-field" type="text" name="password" placeholder="Password">
-            <button class="submit-button" type="submit">Add User</button>
-        </form>   
+        <div class="form-container">
+            <form action="/addUser" method="post">
+                <input class="input-field" type="text" name="username" placeholder="Username">
+                <input class="input-field" type="text" name="email" placeholder="Email">
+                <input class="input-field" type="text" name="password" placeholder="Password">
+                <button class="submit-button" type="submit">Add User</button>
+            </form>  
+        </div> 
         <table>
             <thead>
                 <tr>
