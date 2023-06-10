@@ -1,9 +1,6 @@
 $(document).ready(function() {
-    $("#usertoggle").click(function() {
-        $("#users-container").toggle();
-    });
-
-    $('#menutoggle').click(function() {
+    $("#usertoggle, #menutoggle").click(function() {
+        $("#" + $(this).attr("id").replace("toggle", "") + "-container").toggle();
         $('.slide-in').toggleClass('show');
     });
 
@@ -12,7 +9,7 @@ $(document).ready(function() {
 
     $(".more-info").click(function() {
         modal.css("display", "block");
-        let uid = $(this).parent().find('input[name="userIdStorage"]').val();
+        let uid = $(this).data("user-id");
 
         // $.ajax({
         //     url: "/getUserInfo",
