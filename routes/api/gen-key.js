@@ -7,9 +7,9 @@ const fs = require('fs');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-router.get('/', checkApiKey, isAdmin, async (req, res) => {
+router.post('/', checkApiKey, isAdmin, async (req, res) => {
     try {
-        const pattern = req.query.pattern;
+        const pattern = req.body.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let newString = "";
 

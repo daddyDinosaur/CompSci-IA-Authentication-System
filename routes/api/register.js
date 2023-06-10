@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
 const { SubKey } = require('../../models/subKey');
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const { username, email, password, key } = req.query;
+        const { username, email, password, key } = req.body;
 
         if (!username || !email || !password || !key) {
             return res.status(401).json({ error: 'Missing Data' });

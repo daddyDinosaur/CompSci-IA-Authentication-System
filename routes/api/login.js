@@ -7,9 +7,9 @@ const jwt = require('jsonwebtoken');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const { email, password } = req.query;
+        const { email, password } = req.body;
 
         if (!email || !password) {
             res.send('Missing Data.');
