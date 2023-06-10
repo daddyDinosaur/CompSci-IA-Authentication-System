@@ -36,4 +36,25 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
+router.post('/delAll', checkApiKey, isAdmin, async (req, res) => {
+    try {
+        await SubKey.deleteMany();
+        res.status(200).json({ success: 'Deleted All Keys' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while deleting all keys.' });
+    }
+});
+
+router.post('/delKey', checkApiKey, isAdmin, async (req, res) => {
+    try {
+        const { key } = req.body;
+        await SubKey.findOneAndDelete({ key }, {useFindAndModify: false});
+        res.status(200).json({ success: 'Deleted Key' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while deleting a key.' });
+    }
+});
+
 module.exports = router;
