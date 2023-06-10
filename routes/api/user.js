@@ -19,7 +19,7 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
-router.post('/delAll', security, async (req, res) => {
+router.post('/delAll', checkApiKey, isAdmin, async (req, res) => {
     try {
         await User.deleteMany();
         res.status(200).json({ success: 'Deleted All Users' });
@@ -29,7 +29,7 @@ router.post('/delAll', security, async (req, res) => {
     }
 });
 
-router.post('/delUser', security, async (req, res) => {
+router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
     const { username, id } = req.body;
 
     if(!username && !id){
