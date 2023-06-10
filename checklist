@@ -8,12 +8,24 @@
 8. Edit user's profile: username, email, and password	
 9. Reset stored hardware ID for a user	
 10. Ban or unban users
-11. Delete users/licenses	
+<!-- 11. Delete users/licenses	 -->
 12. Delete expired users with no active subscriptions	
 <!-- 13. Purge all users (for Administrators only)	 -->
 <!-- 14. Implement a queryable API with the near same functionalities as web-based application	 -->
-15. Ensure users must be logged in and authorized to access the API	
+<!-- 15. Ensure users must be logged in and authorized to access the API	 -->
 <!-- 16. API should return valid / invalid responses	
 17. API should provide basic information about the user when logging in	 -->
-18. API should only perform rank-specific actions (according to user's role permissions)	
+<!-- 18. API should only perform rank-specific actions (according to user's role permissions)	 -->
+
+
+extra:
+key viewing page
+
+
+to-do:
+duration & type on keys
+reset hwid
+extra info popup
+    edit and view
+delete with no sub keys
 

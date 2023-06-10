@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const subKeySchema = new mongoose.Schema(
   { key: { type: String },
+    duration: { type: Number },
+    type: { type: String },
   }, { versionKey: false }, {_id: null}
 );
 
