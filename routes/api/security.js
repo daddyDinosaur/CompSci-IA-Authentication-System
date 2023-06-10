@@ -8,10 +8,16 @@ const jwt = require('jsonwebtoken');
 const publicKey = fs.readFileSync(process.env.PUB_KEY_PATH, 'utf8');
 
 const checkApiKey = async (req, res, next) => {
-    const token = req.cookies.authToken;
-    if (!token) {
+    let token;
+    if (req.headers.authorization) {
+        const bearer = req.headers.authorization.split(' ');
+        token = bearer[1];
+    } else if (req.cookies.authToken) {
+        token = req.cookies.authToken;
+    } else {
         return res.status(401).json({ unauthorized: 'No Token' });
     }
+
     try {
         jwt.verify(token, publicKey, { algorithms: 'RS256' }, (err, decoded) => {
             if (err) {
