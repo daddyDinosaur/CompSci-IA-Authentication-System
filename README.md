@@ -13,3 +13,5 @@ https://chat.openai.com
 https://stackoverflow.com/questions/45207104/how-to-set-jwt-token-expiry-time-to-maximum-in-nodejs
 
 https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+
+https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
