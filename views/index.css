@@ -42,6 +42,7 @@ body, .flex-container {
     background-color: #6f2232;
     color: #fff;
     cursor: pointer;
+    justify-content: space-around;
 }
 
 .submit-button, 
