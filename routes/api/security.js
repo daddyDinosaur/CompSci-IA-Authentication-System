@@ -10,7 +10,7 @@ const publicKey = fs.readFileSync(process.env.PUB_KEY_PATH, 'utf8');
 const checkApiKey = async (req, res, next) => {
     const token = req.cookies.authToken;
     if (!token) {
-        return res.status(401).json({ Unauthorized: 'No Token' });
+        return res.status(401).json({ unauthorized: 'No Token' });
     }
     try {
         const decoded = jwt.verify(token, publicKey, { algorithms: 'RS256' });
@@ -18,7 +18,7 @@ const checkApiKey = async (req, res, next) => {
         const user = await User.findById(decoded.userId);
 
         if (!user) {
-            return res.status(401).json({ Unauthorized: 'Invalid User' });
+            return res.status(401).json({ unauthorized: 'Invalid User' });
         }
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;

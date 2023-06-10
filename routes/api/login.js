@@ -19,17 +19,17 @@ router.get('/', async (req, res) => {
         const user = await User.findOne({ email: email });
 
         if (!user) {
-            return res.status(401).json({ Unauthorized: 'Invalid Email' });
+            return res.status(401).json({ error: 'Invalid Email' });
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
         if (!isPasswordCorrect) {
-            return res.status(401).json({ Unauthorized: 'Invalid Pass' });
+            return res.status(401).json({ error: 'Invalid Pass' });
         }
     
         if (user.banned) {
-            return res.status(401).json({ Unauthorized: 'Banned' });
+            return res.status(401).json({ unauthorized: 'Banned' });
         }
 
         const payload = {

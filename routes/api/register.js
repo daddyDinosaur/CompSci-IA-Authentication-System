@@ -9,20 +9,20 @@ router.get('/', async (req, res) => {
         const { username, email, password, key } = req.query;
 
         if (!username || !email || !password || !key) {
-            res.send('Missing Data.');
+            return res.status(401).json({ error: 'Missing Data' });
             return;
         }
 
         const userExists = await User.findOne({$or: [{ email: email }, { username: username }]});
         
         if (userExists) {
-            res.send('User Already Exists.');
+            return res.status(401).json({ error: 'User already exists' });
             return;
         }
 
         const foundKey = await SubKey.findOne({ key });
         if (!foundKey) {
-            res.send('Invalid Key.');
+            return res.status(401).json({ error: 'Invalid Key' });
             return;
         }
 
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
         const bannedIP = await User.findOne({$and: [{ lastIP: ip }, { banned: true }]});
 
         if (bannedIP) {
-            res.send('IP Banned.');
+            return res.status(401).json({ unauthorized: 'IP Banned' });
             return;
         }
 
