@@ -31,6 +31,8 @@ router.get('/', async (req, res) => {
             return res.status(401).json({ unauthorized: 'IP Banned' });
         }
 
+        let role = key.includes("ADMIN") ? "ADMIN" : "USER";
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = new User({
@@ -39,6 +41,7 @@ router.get('/', async (req, res) => {
             password: hashedPassword,
             registered: Date.now(),
             keys: key,
+            role: role,
         });
 
         await SubKey.findOneAndRemove({ key });
