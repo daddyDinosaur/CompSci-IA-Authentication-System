@@ -1,0 +1,19 @@
+<!-- 1. Accept request to validate emails and passwords -->
+<!-- 2. Return a response as validated or invalidated	 -->
+<!-- 3. User registration with required fields: license, username, email, and password	 -->
+<!-- 4. Salt & Hash the passwords during registration	 -->
+5. Implement different roles (Administrators / Moderators / Resellers / Users)	
+<!-- 6. Generate licenses for Pro and Lite subscriptions	 -->
+7. View all users and their related information	
+8. Edit user's profile: username, email, and password	
+9. Reset stored hardware ID for a user	
+10. Ban or unban users
+11. Delete users/licenses	
+12. Delete expired users with no active subscriptions	
+13. Purge all users (for Administrators only)	
+<!-- 14. Implement a queryable API with the near same functionalities as web-based application	 -->
+15. Ensure users must be logged in and authorized to access the API	
+<!-- 16. API should return valid / invalid responses	
+17. API should provide basic information about the user when logging in	 -->
+18. API should only perform rank-specific actions (according to user's role permissions)	
+

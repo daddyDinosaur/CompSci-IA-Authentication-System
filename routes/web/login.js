@@ -40,6 +40,7 @@ router.post('/', async (req, res) => {
         const payload = {
             userId: user._id,
             email: user.email,
+            role: user.role,
         };
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 

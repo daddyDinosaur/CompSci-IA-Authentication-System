@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { SubKey } = require('../../models/subKey');
-const security = require('./security');
+const { checkApiKey, isAdmin } = require('./security');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-router.get('/', security, async (req, res) => {
+router.get('/', checkApiKey, async (req, res) => {
     try {
         const pattern = req.query.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

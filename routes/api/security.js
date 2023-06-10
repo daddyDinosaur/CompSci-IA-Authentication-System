@@ -54,4 +54,25 @@ const checkApiKey = async (req, res, next) => {
     }
 };
 
-module.exports = checkApiKey;
+function isAdmin(req, res, next) {
+    let token;
+    if (req.headers.authorization) {
+        const bearer = req.headers.authorization.split(' ');
+        token = bearer[1];
+    } else if (req.cookies.authToken) {
+        token = req.cookies.authToken;
+    } else {
+        return res.status(401).json({ unauthorized: 'No Token' });
+    }
+    
+    try {
+        const decoded = jwt.verify(token, publicKey);
+        if(decoded.role !== 'admin') return res.status(403).send('Access Denied. You are not authorized to perform this operation.');
+        next();
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+}
+
+module.exports = { checkApiKey, isAdmin };

@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     banned: { type: Boolean, required: false, default: false },
     bannedReason: { type: String, required: false, default: '' },
     hwid: { type: String, required: false, default: '' },
+    role : { type: String, required: false, default: 'User' },
 }, {versionKey: false});
 
 const User = mongoose.model('userBase', userSchema);
