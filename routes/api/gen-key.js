@@ -15,8 +15,6 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
         const pattern = req.body.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let newString = "";
-
-        let role = pattern.includes("ADMIN") ? "admin" : "user";
         
         for (let i = 0; i < pattern.length; i++) {
             if (pattern[i] === "X") {
@@ -26,7 +24,7 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
             }
         }
         
-        const daprog = new SubKey({ key: newString, role: role });
+        const daprog = new SubKey({ key: newString });
         await daprog.save();
         
         const encrpyUsers = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: '1h' });
