@@ -33,7 +33,8 @@ body, .flex-container {
 
 .input-field, 
 .submit-button, 
-.more-info {
+.more-info, 
+.menu-button {
     margin: 0 10px;
     padding: 10px;
     border: none;
@@ -41,13 +42,6 @@ body, .flex-container {
     background-color: #6f2232;
     color: #fff;
     cursor: pointer;
-}
-
-.menu-button {
-    position: absolute;
-    padding: 10px 50px;
-    top: 10px;
-    left: 10px;
 }
 
 .submit-button, 
@@ -58,7 +52,7 @@ body, .flex-container {
 .menu-button {
     position: absolute;
     padding: 10px 50px;
-    bottom: 10px;
+    top: 10px;
     left: 10px;
 }
 
