@@ -15,3 +15,5 @@ https://stackoverflow.com/questions/45207104/how-to-set-jwt-token-expiry-time-to
 https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
 https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
+
+https://stackoverflow.com/questions/48299135/pass-jwt-in-header
