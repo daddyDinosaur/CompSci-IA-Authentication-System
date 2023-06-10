@@ -9,6 +9,9 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
 router.post('/', checkApiKey, isAdmin, async (req, res) => {
     try {
+        if (!req.body.pattern) {
+            return res.status(401).json({ error: 'Missing Data' });
+        }
         const pattern = req.body.pattern;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let newString = "";

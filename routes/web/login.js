@@ -17,8 +17,7 @@ router.post('/', async (req, res) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            res.send('Missing Data.');
-            return;
+            return res.status(401).json({ error: 'Missing Data' });
         }
 
         const user = await User.findOne({ email: email });
