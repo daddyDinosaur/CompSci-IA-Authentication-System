@@ -14,20 +14,17 @@ router.post('/', async (req, res) => {
 
         if (!username || !email || !password || !key) {
             return res.status(401).json({ error: 'Missing Data' });
-            return;
         }
 
         const userExists = await User.findOne({$or: [{ email: email }, { username: username }]});
         
         if (userExists) {
             return res.status(401).json({ error: 'User already exists' });
-            return;
         }
 
         const foundKey = await SubKey.findOne({ key });
         if (!foundKey) {
             return res.status(401).json({ error: 'Invalid Key' });
-            return;
         }
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -36,7 +33,6 @@ router.post('/', async (req, res) => {
 
         if (bannedIP) {
             return res.status(401).json({ unauthorized: 'IP Banned' });
-            return;
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);

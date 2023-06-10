@@ -26,8 +26,7 @@ const checkApiKey = async (req, res, next) => {
         const bannedIP = await User.findOne({$and: [{ lastIP: ip }, { banned: true }]});
 
         if (bannedIP) {
-            res.send('IP Banned.');
-            return;
+            return res.status(401).json({ unauthorized: 'IP Banned' });
         }
 
         next();
