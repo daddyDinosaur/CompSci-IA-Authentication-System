@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
             password: hashedPassword,
             registered: Date.now(),
             keys: key,
-            role: "USER"",
+            role: "USER",
         });
 
         await SubKey.findOneAndRemove({ key });
