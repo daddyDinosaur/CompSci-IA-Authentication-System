@@ -15,6 +15,7 @@
             <button id="placeholderA" class="menu-button"></button>
             <button id="placeholderA" class="menu-button"></button>
             <button id="usertoggle" class="menu-button">Users</button>
+            <button id="keytoggle" class="menu-button">Keys</button>
         </div>
     </div>
 
@@ -68,6 +69,40 @@
           </tbody>
         </table>
     </div>
+
+    <div id="keys-container" class="users">
+        <h1 class="title centered-text">Keys</h1>
+
+        <div class="form-container">
+            <table>
+                <tr>
+                    <th>Key</th>
+                    <th>Actions</th>
+                </tr>
+                <% keys.forEach(function(key) { %>
+                    <tr>
+                        <td><%= key.value %></td>
+                        <td>
+                            <button class="button delete-key" data-key-id="<%= key._id %>">Delete</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    
+        <div class="buttons-container">
+            <form action="/api/genkey" method="post">
+                <div class="input-row">
+                    <input class="input-field" type="text" name="pattern" placeholder="Pattern">
+                    <input class="input-field" type="text" name="duration" placeholder="Duration">
+                    <input class="input-field" type="text" name="type" placeholder="Type">
+                    <button class="submit-button" type="submit">Add User</button>
+                </div>
+            </form>  
+            <button class="button" id="delete-all-keys">Delete All Keys</button>
+        </div>
+    </div>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
         <span class="close">&times;</span>

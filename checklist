@@ -24,11 +24,11 @@ to-do:
     edit and view -->
 <!-- delete with no sub keys -->
 <!-- set sub to nothing if expired -->
-make a filter to not delete inactive subs who are banned
+<!-- make a filter to not delete inactive subs who are banned -->
 key viewing page
     key generate button
     delete key button
     view all keys ofc
-button to delete all users
-button to delete all expired
+<!-- button to delete all users -->
+<!-- button to delete all expired -->
 

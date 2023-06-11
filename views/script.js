@@ -7,6 +7,10 @@ $(document).ready(function() {
         $("#users-container").toggle();
     });
 
+    $("#keytoggle").click(function() {
+        $("#keys-container").toggle();
+    });
+
     const modal = $("#myModal");
     const close = $(".close");
 
@@ -125,5 +129,14 @@ $(document).ready(function() {
         if (event.target == modal[0]) {
             modal.css("display", "none");
         }
+    });
+
+    $('.delete-key').click(function() {
+        const keyId = $(this).data('key-id');
+
+    });
+
+    $('#delete-all-keys').click(function() {
+
     });
 });
