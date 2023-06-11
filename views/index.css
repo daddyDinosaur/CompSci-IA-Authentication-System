@@ -61,7 +61,8 @@ body, .flex-container {
     cursor: pointer;
 }
 
-.input-field-special {
+.input-field-special, 
+.more-info-special {
     margin: 0 0.5em;
     padding: 10px;
     flex-grow: 1;
