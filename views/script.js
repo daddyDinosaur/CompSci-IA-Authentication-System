@@ -31,7 +31,7 @@ $(document).ready(function() {
                 <p class="white-text">Last IP: ${user.lastIP}</p>
                 <p class="white-text">Keys: ${user.keys}</p>
                 <p class="white-text">Subscription: ${user.subscription}</p>
-                <p class="white-text">Expiry: ${user.expiry}</p>
+                <p class="white-text">Expiry: ${user.expiry.toLocaleString()}</p>
                 <p class="white-text">Banned: ${user.banned}</p>
                 <p class="white-text">Ban Reason: ${user.banReason}</p>
                 <p class="white-text">HWID: ${user.hwid}</p>
