@@ -166,8 +166,8 @@ router.post('/saveUser', checkApiKey, isAdmin, async (req, res) => {
     try {
         const { id, username, email, password, role } = req.body;
 
-        if (!id || !username || !email || !password || !role) {
-            return res.status(400).json({ error: 'Missing data' });
+        if (!id) {
+            return res.status(400).json({ error: 'Missing user id' });
         }
 
         const user = await User.findById(id);
@@ -176,14 +176,14 @@ router.post('/saveUser', checkApiKey, isAdmin, async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        user.username = username;
-        user.email = email;
-        user.password = await bcrypt.hash(password, 10); 
-        user.role = role.toUpperCase();
+        if (username) user.username = username;
+        if (email) user.email = email;
+        if (password) user.password = await bcrypt.hash(password, 10); 
+        if (role) user.role = role;
 
-        await user.save(); 
+        await user.save();
 
-        res.status(200).json({ success: 'User saved', userId: user._id, username: user.username });
+        res.status(200).json({ success: 'User updated', user: user });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
