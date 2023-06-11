@@ -74,8 +74,8 @@ body, .flex-container {
 }
 
 .menu-button {
-    position: absolute;
     padding: 10px 50px;
+    top: 10px;
     left: 10px;
 }
 
