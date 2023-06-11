@@ -83,6 +83,11 @@ body, .flex-container {
     position: absolute;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 .menu-button-a {
     padding: 10px 50px;
     flex-grow: 0;
