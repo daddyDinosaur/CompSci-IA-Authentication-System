@@ -5,12 +5,17 @@ $(document).ready(function() {
     });
 
     $("#usertoggle").click(function() {
-        $("#users-container").toggle();
+        if($("#keys-container").is(':hidden')){
+            $("#users-container").toggle();
+        }
     });
-
+    
     $("#keytoggle").click(function() {
-        $("#keys-container").toggle();
+        if($("#users-container").is(':hidden')){
+            $("#keys-container").toggle();
+        }
     });
+    
 
     const modal = $("#myModal");
     const close = $(".close");
