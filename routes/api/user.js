@@ -52,7 +52,7 @@ router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
-router.get('/delExpired', checkApiKey, isAdmin, async (req, res) => {
+router.post('/delExpired', checkApiKey, isAdmin, async (req, res) => {
     try {
         const usersCursor = User.find({}).cursor();
 
