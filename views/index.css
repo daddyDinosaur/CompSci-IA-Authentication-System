@@ -73,11 +73,6 @@ body, .flex-container {
     cursor: pointer;
 }
 
-.menu-button {
-    position: absolute;
-    padding: 10px 50px;
-}
-
 table {
     width: 80%;
     margin: 20px auto;
