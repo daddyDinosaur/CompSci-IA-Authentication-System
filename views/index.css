@@ -6,6 +6,7 @@ body, .flex-container {
     flex-direction: column;
     height: 100vh;
     width: 100%; 
+    position: relative;
 }
 
 .title {
@@ -74,6 +75,7 @@ body, .flex-container {
 }
 
 .menu-button {
+    position: absolute;
     flex-grow: 0;
     padding: 10px 50px;
     top: 10px;
