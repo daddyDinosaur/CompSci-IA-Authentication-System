@@ -151,6 +151,10 @@ table th {
     font-weight: bold;
 }
 
+.white-text {
+    color: white;
+}
+
 .close:hover,
 .close:focus {
     color: #000;

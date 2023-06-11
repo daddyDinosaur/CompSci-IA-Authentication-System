@@ -18,30 +18,30 @@ $(document).ready(function() {
             type: "POST",
             data: { id: uid },
             success: function(user) {
-                let html = `
-                    <h2>User Info for ${user.username}</h2>
-                    <p>Registered: ${user.registered}</p>
-                    <p>Last Login: ${user.lastLogin}</p>
-                    <p>Last IP: ${user.lastIP}</p>
-                    <p>Keys: ${user.keys}</p>
-                    <p>Subscription: ${user.subscription}</p>
-                    <p>Expiry: ${user.expiry}</p>
-                    <p>Banned: ${user.banned}</p>
-                    <p>Ban Reason: ${user.banReason}</p>
-                    <p>HWID: ${user.hwid}</p>
-                    <p>ID: ${user._id}</p>
-    
-                    <h2>Edit User</h2>
-                    <input id="username" type="text" value="${user.username}">
-                    <input id="email" type="text" value="${user.email}">
-                    <input id="password" type="text" value="${user.password}">
-                    <input id="role" type="text" value="${user.role}">
-                    <button id="ban-toggle">Toggle Ban</button>
-                    <button id="save-user">Save</button>
-                `;
-    
+                var html = `<h1 class="white-text">User Info</h1>
+                <p class="white-text">Registered: ${user.registered}</p>
+                <p class="white-text">Last login: ${user.lastLogin}</p>
+                <p class="white-text">Last IP: ${user.lastIP}</p>
+                <p class="white-text">Keys: ${user.keys}</p>
+                <p class="white-text">Subscription: ${user.subscription}</p>
+                <p class="white-text">Expiry: ${user.expiry}</p>
+                <p class="white-text">Banned: ${user.banned}</p>
+                <p class="white-text">Ban Reason: ${user.banReason}</p>
+                <p class="white-text">HWID: ${user.hwid}</p>
+            
+                <h2 class="white-text">Edit User</h2>
+                <form id="edit-user-form">
+                    <input class="input-field white-text" type="text" name="username" value="${user.username}">
+                    <input class="input-field white-text" type="text" name="email" value="${user.email}">
+                    <input class="input-field white-text" type="password" name="password" placeholder="New Password">
+                    <input class="input-field white-text" type="text" name="role" value="${user.role}">
+                    <button id="update-button" type="button" class="white-text">Update User</button>
+                    <button id="ban-toggle-button" type="button" class="white-text">${user.banned ? 'Unban' : 'Ban'} User</button>
+                    <button id="delete-button" type="button" class="white-text">Delete User</button>
+                </form>`;
+            
                 $("#modal-content").html(html);
-            }
+            }            
         });
     
         modal.css("display", "block");
