@@ -22,3 +22,4 @@ https://stackoverflow.com/questions/30915424/express-what-is-the-difference-betw
 
 https://www.w3schools.com/js/js_let.asp
 
+https://blog.logrocket.com/password-hashing-node-js-bcrypt/
