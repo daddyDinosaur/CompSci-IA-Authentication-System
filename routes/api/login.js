@@ -32,10 +32,17 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ unauthorized: 'Banned' });
         }
 
+        if (user.expiry && new Date(user.expiry) < Date.now()) {
+            user = await User.findOneAndUpdate({ _id: user._id }, { $set: { expiry: null, subscription: null } }, { new: true });
+        }
+
         const payload = {
             userId: user._id,
             email: user.email,
             role: user.role,
+            subscription: user.subscription,
+            expiry: user.expiry,
+            hwid: user.hwid,
         };
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 

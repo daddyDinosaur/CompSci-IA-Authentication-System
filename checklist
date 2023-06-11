@@ -9,7 +9,7 @@
 9. Reset stored hardware ID for a user	
 10. Ban or unban users
 <!-- 11. Delete users/licenses	 -->
-12. Delete expired users with no active subscriptions	
+<!-- 12. Delete expired users with no active subscriptions	 -->
 <!-- 13. Purge all users (for Administrators only)	 -->
 <!-- 14. Implement a queryable API with the near same functionalities as web-based application	 -->
 <!-- 15. Ensure users must be logged in and authorized to access the API	 -->
@@ -26,4 +26,5 @@ to-do:
 reset hwid
 extra info popup
     edit and view
-delete with no sub keys
+<!-- delete with no sub keys -->
+<!-- set sub to nothing if expired -->
