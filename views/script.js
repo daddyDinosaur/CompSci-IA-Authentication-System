@@ -49,6 +49,18 @@ $(document).ready(function() {
                 </form>`;
             
                 $("#modal-content").html(html);
+
+                $("#delete-user").click(function() {
+                    $.ajax({
+                        url: "/api/users/delUser",
+                        type: "POST",
+                        data: { id: uid },
+                        success: function() {
+                            alert("User deleted successfully!");
+                            modal.css("display", "none");
+                        }
+                    });
+                });
             }            
         });
     
