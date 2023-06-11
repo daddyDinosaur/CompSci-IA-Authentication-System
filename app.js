@@ -40,7 +40,7 @@ const startApp = async () => {
     app.use('/api/users', userApiRoutes);
     app.use('/api/login', loginApiRoutes);
     app.use('/api/register', registerApiRoutes);
-    app.use('/api/gen-key', genKeyApiRoutes);
+    app.use('/api/genKey', genKeyApiRoutes);
 
     // Web
     const loginRoutes = require('./routes/web/login');

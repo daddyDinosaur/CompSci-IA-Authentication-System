@@ -58,5 +58,21 @@ router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
+router.get('/delExpired', checkApiKey, isAdmin, async (req, res) => {
+    try {
+        const usersCursor = User.find({}).cursor();
+
+        for (let daUser = await usersCursor.next(); daUser != null; daUser = await usersCursor.next()) {
+            if (!daUser.expiry || new Date(daUser.expiry) < Date.now()) {
+                await User.findByIdAndDelete(daUser._id);
+            }
+        }
+
+        res.status(200).json({ success: 'Deleted expired accounts' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
 
 module.exports = router;
