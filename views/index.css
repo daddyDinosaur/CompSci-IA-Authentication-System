@@ -61,9 +61,15 @@ body, .flex-container {
     cursor: pointer;
 }
 
-.submit-button, 
-.more-info {
-    background-color: #950740;
+.input-field-special {
+    margin: 0 0.5em;
+    padding: 10px;
+    flex-grow: 1;
+    border: none;
+    border-radius: 5px;
+    background-color: #1a1a1d;
+    color: #fff;
+    cursor: pointer;
 }
 
 .menu-button {
