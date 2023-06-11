@@ -141,12 +141,10 @@ $(document).ready(function() {
 
     $('.delete-key').click(function() {
         const keyId = $(this).data('key-id');
-        console.log("del")
-        console.log(keyId);
         $.ajax({
             url: "/api/genkey/delKey",
             type: "POST",
-            data: { id: keyId },
+            data: { key: keyId },
             success: function() {
                 alert("Deleted key successfully!");
                 location.reload();
