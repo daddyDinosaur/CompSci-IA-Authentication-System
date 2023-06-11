@@ -88,7 +88,9 @@ body, .flex-container {
     flex-grow: 0;
     top: 10px;
     left: 10px;
+    bottom: 10px;
     z-index: 10;
+    position: fixed;
 }
 
 .menu-button-b {
@@ -97,6 +99,7 @@ body, .flex-container {
     top: 40px;
     left: 10px;
     z-index: 10;
+    position: fixed;
 }
 
 table {
