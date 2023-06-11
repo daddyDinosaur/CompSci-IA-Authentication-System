@@ -57,8 +57,6 @@ router.post('/', async (req, res) => {
 router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
     try {
         const { username, email, password, key, role } = req.body;
-        const duration = this.duration;
-        let durationInMs;
 
         if (!username || !email || !password || !key) {
             return res.status(401).json({ error: 'Missing Data' });
@@ -79,19 +77,24 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
             return res.status(401).json({ error: 'Invalid Key' });
         }
         
-        if (duration.endsWith("H")) {
-            durationInMs = parseInt(duration) * 60 * 60 * 1000;  
-        } else if (duration.endsWith("D")) {
-            durationInMs = parseInt(duration) * 24 * 60 * 60 * 1000;  
-        } else if (duration.endsWith("W")) {
-            durationInMs = parseInt(duration) * 7 * 24 * 60 * 60 * 1000; 
-        } else if (duration.endsWith("M")) {
-            durationInMs = parseInt(duration) * 30 * 24 * 60 * 60 * 1000;  
-        } else if (duration.endsWith("Y")) {
-            durationInMs = parseInt(duration) * 365.25 * 24 * 60 * 60 * 1000;  
-        }
+        const durationUnits = {
+            'H': 60 * 60 * 1000,
+            'D': 24 * 60 * 60 * 1000,
+            'W': 7 * 24 * 60 * 60 * 1000,
+            'M': 30 * 24 * 60 * 60 * 1000,
+            'Y': 365.25 * 24 * 60 * 60 * 1000
+        };
+        const duration = foundKey.duration;
+        const unit = duration.slice(-1);
+        const value = parseInt(duration);
         
-        this.expiresAt = new Date(Date.now() + durationInMs);
+        if (durationUnits.hasOwnProperty(unit)) {
+            const durationInMs = value * durationUnits[unit];
+            foundKey.expiresAt = new Date(Date.now() + durationInMs);
+            await foundKey.save();
+        } else {
+            return res.status(401).json({ error: 'Invalid Duration' });
+        }        
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
