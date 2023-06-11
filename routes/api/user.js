@@ -183,7 +183,7 @@ router.post('/saveUser', checkApiKey, isAdmin, async (req, res) => {
 
         await user.save();
 
-        res.status(200).json({ success: 'User updated', user: user });
+        res.status(200).json({ success: 'User updated' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
