@@ -95,7 +95,7 @@ body, .flex-container {
 .menu-button-b {
     padding: 10px 50px;
     flex-grow: 0;
-    top: 40px;
+    top: 60px;
     left: 10px;
     z-index: 10;
 }
