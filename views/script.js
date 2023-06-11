@@ -14,7 +14,7 @@ $(document).ready(function() {
         let uid = $(this).data("user-id");
     
         $.ajax({
-            url: "/users/getUserInfo",
+            url: "/api/users/getUserInfo",
             type: "POST",
             data: { id: uid },
             success: function(user) {
