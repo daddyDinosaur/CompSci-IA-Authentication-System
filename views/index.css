@@ -21,7 +21,7 @@ body, .flex-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .form {
@@ -75,6 +75,7 @@ body, .flex-container {
 }
 
 .menu-button {
+    position: absolute;
     flex-grow: 0;
     padding: 10px 50px;
     top: 10px;
