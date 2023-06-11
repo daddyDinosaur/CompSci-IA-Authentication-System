@@ -72,16 +72,16 @@
         <h1 class="title centered-text">Keys</h1>
     
         <div class="buttons-container">
-            <form action="/api/genkey" method="post">
+            <form id="key-form">
                 <div class="input-row">
-                    <input class="input-field" type="text" name="pattern" placeholder="Pattern">
-                    <input class="input-field" type="text" name="duration" placeholder="Duration">
-                    <input class="input-field" type="text" name="type" placeholder="Type">
-                    <button class="submit-button" type="submit">Add Key</button>
+                    <input id="pattern" class="input-field" type="text" name="pattern" placeholder="Pattern">
+                    <input id="duration" class="input-field" type="text" name="duration" placeholder="Duration">
+                    <input id="type" class="input-field" type="text" name="type" placeholder="Type">
                 </div>
             </form>  
         </div>
         <div class="center">
+            <button class="button" id="create-key">Create Key</button>        
             <button class="submit-button" id="delete-all-keys">Delete All Keys</button>
         </div>        
 

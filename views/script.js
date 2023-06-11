@@ -147,4 +147,28 @@ $(document).ready(function() {
     $('#delete-all-keys').click(function() {
 
     });
+
+    $('#create-key').click(function(e) {
+        e.preventDefault();
+
+        var pattern =  $('#pattern').val();
+        var duration = $('#duration').val();
+        var type = $('#type').val();
+
+        $.ajax({
+            url: '/api/genkey',
+            method: 'POST',
+            data: {
+                pattern: pattern,
+                duration: duration,
+                type: type
+            },
+            success: function(response) {
+                alert("Key generated successfully!");
+                location.reload();
+            }
+        });
+    });
+
+    
 });
