@@ -36,3 +36,4 @@ https://www.w3schools.com/xml/ajax_intro.asp
 
 https://www.geeksforgeeks.org/how-to-make-ajax-call-from-javascript/
 
+https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
