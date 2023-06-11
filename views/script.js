@@ -5,13 +5,15 @@ $(document).ready(function() {
     });
 
     $("#usertoggle").click(function() {
-        if($("#keys-container").is(':hidden')){
+        if($("#keys-container").is(':visible')){
+            $("#keys-container").toggle();
             $("#users-container").toggle();
         }
     });
     
     $("#keytoggle").click(function() {
-        if($("#users-container").is(':hidden')){
+        if($("#users-container").is(':visible')){
+            $("#users-container").toggle();
             $("#keys-container").toggle();
         }
     });
