@@ -19,3 +19,6 @@ https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
 https://stackoverflow.com/questions/48299135/pass-jwt-in-header
 
 https://stackoverflow.com/questions/30915424/express-what-is-the-difference-between-req-query-and-req-body
+
+https://www.w3schools.com/js/js_let.asp
+
