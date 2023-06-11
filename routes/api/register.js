@@ -87,12 +87,11 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
         const duration = foundKey.duration;
         const unit = duration.slice(-1).toUpperCase();
         const value = parseInt(duration);
+        const newExpiryDate = new Date();
         
         if (durationUnits.hasOwnProperty(unit)) {
             const durationInMs = value * durationUnits[unit];
-            const newExpiryDate = new Date(Date.now() + durationInMs);
-        
-            await User.findOneAndUpdate({ _id: req.user.id }, { expiry: newExpiryDate, subscription: foundKey.type });
+            newExpiryDate = new Date(Date.now() + durationInMs);
         } else {
             return res.status(401).json({ error: 'Invalid Duration on Key' });
         }
@@ -114,6 +113,8 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
             registered: Date.now(),
             keys: key,
             role: role,
+            subscription: foundKey.type,
+            expiry: newExpiryDate,
         });
 
         await SubKey.findOneAndRemove({ key });
