@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     lastIP: { type: String, required: false },
     keys: { type: [mongoose.Schema.Types.Mixed], required: false, default: [] },
     subscription: { type: String, required: false, default: 'None' },
-    expiry: { type: Number, required: false, default: 0 },
+    expiry: { type: Date, required: false },
     banned: { type: Boolean, required: false, default: false },
     bannedReason: { type: String, required: false, default: '' },
     hwid: { type: String, required: false, default: '' },

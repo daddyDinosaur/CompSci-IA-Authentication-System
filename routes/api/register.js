@@ -90,11 +90,12 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
         
         if (durationUnits.hasOwnProperty(unit)) {
             const durationInMs = value * durationUnits[unit];
-            foundKey.expiresAt = new Date(Date.now() + durationInMs);
-            await foundKey.save();
+            const newExpiryDate = new Date(Date.now() + durationInMs);
+        
+            await User.findOneAndUpdate({ _id: req.user.id }, { expiry: newExpiryDate, subscription: foundKey.type });
         } else {
-            return res.status(401).json({ error: 'Invalid Duration' });
-        }        
+            return res.status(401).json({ error: 'Invalid Duration on Key' });
+        }
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
