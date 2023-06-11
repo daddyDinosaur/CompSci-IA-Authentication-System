@@ -36,9 +36,9 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
         const daprog = new SubKey({ key: newString, duration: duration, type: type });
         await daprog.save();
 
-        const encrpyUsers = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: duration });
+        const encryptedKey = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: duration });
 
-        res.json(encrpyUsers);
+        res.json(encryptedKey);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });

@@ -11,8 +11,8 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 router.post('/', checkApiKey, isAdmin, async (req, res) => {
     try {
         const theUsers = await User.find();
-        const encrpyUsers = jwt.sign({ users: theUsers }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
-        res.json(encrpyUsers);
+        const encryptedUsers = jwt.sign({ users: theUsers }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
+        res.json(encryptedUsers);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
@@ -45,7 +45,7 @@ router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
             return res.status(404).json({ error: 'No user found to delete.' });
         }
 
-        res.status(200).json({ success: 'Deleted User' });
+        res.status(200).json({ success: 'Deleted User', userId: user._id, username: user.username });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'An error occurred while deleting a user.' });
@@ -93,6 +93,32 @@ router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
         res.status(500).json({ error: 'An error occurred' });
     }
 });
+
+router.post('/resetHwid', async (req, res) => {
+    try {
+        const { id, username } = req.body;
+
+        if (!id && !username) {
+            return res.status(400).json({ error: 'Missing id or username' });
+        }
+
+        const query = id ? { _id: id } : { username: username };
+        const user = await User.findOne(query);
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        user.hwid = "";
+        await user.save();
+
+        res.status(200).json({ success: 'User HWID reset', userId: user._id, username: user.username });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
 
 
 module.exports = router;
