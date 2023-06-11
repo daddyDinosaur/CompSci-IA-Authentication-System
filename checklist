@@ -4,8 +4,8 @@
 <!-- 4. Salt & Hash the passwords during registration	 -->
 <!-- 5. Implement different roles (Administrators / Users)	 -->
 <!-- 6. Generate licenses for Pro and Lite subscriptions	 -->
-7. View all users and their related information	
-8. Edit user's profile: username, email, and password	
+<!-- 7. View all users and their related information	
+8. Edit user's profile: username, email, and password	 -->
 <!-- 9. Reset stored hardware ID for a user	 -->
 <!-- 10. Ban or unban users -->
 <!-- 11. Delete users/licenses	 -->
@@ -18,13 +18,14 @@
 <!-- 18. API should only perform rank-specific actions (according to user's role permissions)	 -->
 
 
-extra:
-key viewing page
-
-
 to-do:
 <!-- reset hwid -->
-extra info popup
-    edit and view
+<!-- extra info popup
+    edit and view -->
 <!-- delete with no sub keys -->
 <!-- set sub to nothing if expired -->
+make a filter to not delete inactive subs who are banned
+key viewing page
+    key generate button
+    delete key button
+    view all keys ofc

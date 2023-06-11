@@ -47,7 +47,7 @@ $(document).ready(function() {
                     <button id="hwid-button" type="button" class="more-info-special white-text">Reset HWID</button>
                     <button id="ban-toggle-button" type="button" class="more-info-special white-text">${user.banned ? 'Unban' : 'Ban'} User</button>
                     <button id="delete-button" type="button" class="more-info-special white-text">Delete User</button>
-                            ]                </form>`;
+                    </form>`;
             
                 $("#modal-content").html(html);
 
