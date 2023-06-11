@@ -59,7 +59,7 @@ router.post('/delAll', checkApiKey, isAdmin, async (req, res) => {
 router.post('/delKey', checkApiKey, isAdmin, async (req, res) => {
     try {
         const { key } = req.body;
-        await SubKey.findOneAndDelete({ key }, {useFindAndModify: false});
+        await SubKey.findOneAndDelete({ key: key }, {useFindAndModify: false});
         res.status(200).json({ success: 'Deleted Key' });
     } catch (error) {
         console.error(error);
