@@ -58,6 +58,7 @@ $(document).ready(function() {
                         success: function() {
                             alert("User deleted successfully!");
                             modal.css("display", "none");
+                            location.reload();
                         }
                     });
                 });

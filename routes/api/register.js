@@ -127,7 +127,7 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
             password: hashedPassword,
             registered: Date.now(),
             keys: key,
-            role: role,
+            role: role.toUpperCase(),
             subscription: foundKey.type,
             expiry: newExpiryDate,
         });
