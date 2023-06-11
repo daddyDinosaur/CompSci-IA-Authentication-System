@@ -21,10 +21,12 @@
     <div id="users-container" class="users">
         <h1 class="title centered-text">Users</h1>
         <div class="form-container">
-            <form action="/addUser" method="post">
+            <form action="/api/register/admin" method="post">
                 <input class="input-field" type="text" name="username" placeholder="Username">
                 <input class="input-field" type="text" name="email" placeholder="Email">
                 <input class="input-field" type="text" name="password" placeholder="Password">
+                <input class="input-field" type="text" name="key" placeholder="Key">
+                <input class="input-field" type="text" name="role" placeholder="Role">
                 <button class="submit-button" type="submit">Add User</button>
             </form>  
         </div> 
