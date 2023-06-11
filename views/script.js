@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $("#keys-container").toggle();
     $("#menutoggle").click(function() {
         $('.slide-in').toggleClass('show');
     });
