@@ -57,7 +57,7 @@ router.get('/delExpired', checkApiKey, isAdmin, async (req, res) => {
         const usersCursor = User.find({}).cursor();
 
         for (let daUser = await usersCursor.next(); daUser != null; daUser = await usersCursor.next()) {
-            if (!daUser.expiry || new Date(daUser.expiry) < Date.now()) {
+            if (!daUser.expiry || new Date(daUser.expiry) < Date.now() && !daUser.banned) {
                 await User.findByIdAndDelete(daUser._id);
             }
         }
