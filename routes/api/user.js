@@ -69,4 +69,30 @@ router.get('/delExpired', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
+router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
+    try {
+        const { id, username } = req.body;
+
+        if (!id && !username) {
+            return res.status(400).json({ error: 'Missing id or username' });
+        }
+
+        const query = id ? { _id: id } : { username: username };
+        const user = await User.findOne(query);
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        user.banned = !user.banned;
+        await user.save();
+
+        res.status(200).json({ success: 'User ban status toggled', userId: user._id, username: user.username, banned: user.banned });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+
 module.exports = router;
