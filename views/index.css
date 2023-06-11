@@ -80,6 +80,7 @@ body, .flex-container {
     top: 10px;
     left: 10px;
     z-index: 10;
+    position: absolute;
 }
 
 .menu-button-a {
