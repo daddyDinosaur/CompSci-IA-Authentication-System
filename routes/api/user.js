@@ -91,7 +91,7 @@ router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
         }
 
         user.banned = !user.banned;
-        
+
         await user.save();
 
         res.status(200).json({ success: 'User ban status toggled', userId: user._id, username: user.username, banned: user.banned });
@@ -101,7 +101,7 @@ router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
     }
 });
 
-router.post('/resetHwid', async (req, res) => {
+router.post('/resetHwid', checkApiKey, isAdmin, async (req, res) => {
     try {
         const { id, username } = req.body;
 
@@ -120,6 +120,41 @@ router.post('/resetHwid', async (req, res) => {
         await user.save();
 
         res.status(200).json({ success: 'User HWID reset', userId: user._id, username: user.username });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.body;
+
+        if (!id) {
+            return res.status(400).json({ error: 'Missing user ID' });
+        }
+
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json({
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            role: user.role,
+            keys: user.keys,
+            subscription: user.subscription,
+            expiry: user.expiry,
+            banned: user.banned,
+            banReason: user.banReason,
+            hwid: user.hwid,
+            registered: user.registered,
+            lastLogin: user.lastLogin,
+            lastIP: user.lastIP,
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
