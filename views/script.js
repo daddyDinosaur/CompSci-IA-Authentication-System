@@ -27,7 +27,7 @@ $(document).ready(function() {
         return date.toLocaleString();
     }
 
-    $(".more-info").click(function() {
+    $("#moreInfobutt").click(function() {
         let uid = $(this).data("user-id");
     
         $.ajax({
