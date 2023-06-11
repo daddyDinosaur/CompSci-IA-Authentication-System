@@ -74,34 +74,20 @@ body, .flex-container {
     cursor: pointer;
 }
 
-.menu-button-a {
-    margin: 0 0.5em;
-    border: none;
-    border-radius: 5px;
-    background-color: #6f2232;
-    color: #fff;
-    cursor: pointer;
+.menu-button-b {
     padding: 10px 50px;
     flex-grow: 0;
     top: 10px;
     left: 10px;
     z-index: 10;
-    position: absolute;
 }
 
 .menu-button-b {
-    margin: 0 0.5em;
-    border: none;
-    border-radius: 5px;
-    background-color: #6f2232;
-    color: #fff;
-    cursor: pointer;
     padding: 10px 50px;
     flex-grow: 0;
-    top: 10px;
+    top: 40px;
     left: 10px;
     z-index: 10;
-    position: absolute;
 }
 
 table {
