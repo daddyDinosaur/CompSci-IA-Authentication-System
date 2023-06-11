@@ -10,6 +10,11 @@ $(document).ready(function() {
     const modal = $("#myModal");
     const close = $(".close");
 
+    function formatTimestamp(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleString();
+    }
+
     $(".more-info").click(function() {
         let uid = $(this).data("user-id");
     
@@ -18,9 +23,11 @@ $(document).ready(function() {
             type: "POST",
             data: { id: uid },
             success: function(user) {
+                let formattedRegistered = formatTimestamp(user.registered);
+                let formattedLastLogin = formatTimestamp(user.lastLogin);
                 var html = `<h1 class="white-text">User Info</h1>
-                <p class="white-text">Registered: ${user.registered}</p>
-                <p class="white-text">Last login: ${user.lastLogin}</p>
+                <p class="white-text">Registered: ${formattedRegistered}</p>
+                <p class="white-text">Last login: ${formattedLastLogin}</p>
                 <p class="white-text">Last IP: ${user.lastIP}</p>
                 <p class="white-text">Keys: ${user.keys}</p>
                 <p class="white-text">Subscription: ${user.subscription}</p>
