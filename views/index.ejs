@@ -79,7 +79,7 @@
                     <input class="input-field" type="text" id="type" name="type" placeholder="Type">
                 </div>
             </form>
-            <button class="button" id="create-key">Create Key</button>
+            <button class="submit-button" id="create-key">Create Key</button>
         </div>        
         <div class="center">
             <button class="submit-button" id="delete-all-keys">Delete All Keys</button>
@@ -89,11 +89,15 @@
             <table>
                 <tr>
                     <th>Key</th>
+                    <th>Duration</th>
+                    <th>Type</th>
                     <th>Actions</th>
                 </tr>
                 <% keys.forEach(function(key) { %>
                     <tr>
-                        <td><%= key.value %></td>
+                        <td><%= key.key %></td>
+                        <td><%= key.duration %></td>
+                        <td><%= key.type %></td>
                         <td>
                             <button class="button delete-key" data-key-id="<%= key._id %>">Delete</button>
                         </td>
