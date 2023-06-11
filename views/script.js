@@ -141,11 +141,27 @@ $(document).ready(function() {
 
     $('.delete-key').click(function() {
         const keyId = $(this).data('key-id');
-
+        $.ajax({
+            url: "/api/genkey/delKey",
+            type: "POST",
+            data: { id: keyId },
+            success: function() {
+                alert("Deleted key successfully!");
+                location.reload();
+            }
+        });
     });
 
     $('#delete-all-keys').click(function() {
-
+        $.ajax({
+            url: "/api/genkey/delAll",
+            type: "POST",
+            data: { },
+            success: function() {
+                alert("Deleted all keys successfully!");
+                location.reload();
+            }
+        });
     });
 
     $(document).ready(function() {

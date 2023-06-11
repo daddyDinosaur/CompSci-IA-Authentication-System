@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
         }
 
         if (user.expiry && new Date(user.expiry) < Date.now()) {
-            user = await User.findOneAndUpdate({ _id: user._id }, { $set: { expiry: null, subscription: null } }, { new: true });
+            user = await User.findOneAndUpdate({ _id: user._id }, { $set: { expiry: null, subscription: null } }, { new: true }, {useFindAndModify: false});
         }
 
         const payload = {
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
         };
 
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
-        await User.findOneAndUpdate({ _id: user._id }, { $set: { lastLogin: Date.now(), lastIP: ip } });
+        await User.findOneAndUpdate({ _id: user._id }, { $set: { lastLogin: Date.now(), lastIP: ip } }, {useFindAndModify: false});
 
         const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
