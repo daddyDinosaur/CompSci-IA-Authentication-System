@@ -25,13 +25,14 @@ $(document).ready(function() {
             success: function(user) {
                 let formattedRegistered = formatTimestamp(user.registered);
                 let formattedLastLogin = formatTimestamp(user.lastLogin);
+                let formattedExpiry = formatTimestamp(user.expiry);
                 var html = `<h1 class="white-text">User Info</h1>
                 <p class="white-text">Registered: ${formattedRegistered}</p>
                 <p class="white-text">Last login: ${formattedLastLogin}</p>
                 <p class="white-text">Last IP: ${user.lastIP}</p>
                 <p class="white-text">Keys: ${user.keys}</p>
                 <p class="white-text">Subscription: ${user.subscription}</p>
-                <p class="white-text">Expiry: ${user.expiry.toLocaleString()}</p>
+                <p class="white-text">Expiry: ${formattedExpiry}</p>
                 <p class="white-text">Banned: ${user.banned}</p>
                 <p class="white-text">Ban Reason: ${user.banReason}</p>
                 <p class="white-text">HWID: ${user.hwid}</p>
