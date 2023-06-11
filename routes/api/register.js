@@ -85,7 +85,7 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
             'Y': 365.25 * 24 * 60 * 60 * 1000
         };
         const duration = foundKey.duration;
-        const unit = duration.slice(-1);
+        const unit = duration.slice(-1).toupperCase();
         const value = parseInt(duration);
         
         if (durationUnits.hasOwnProperty(unit)) {
