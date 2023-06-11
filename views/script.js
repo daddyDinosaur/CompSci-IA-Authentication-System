@@ -50,7 +50,7 @@ $(document).ready(function() {
             
                 $("#modal-content").html(html);
 
-                $("#delete-user").click(function() {
+                $("#delete-button").click(function() {
                     $.ajax({
                         url: "/api/users/delUser",
                         type: "POST",
