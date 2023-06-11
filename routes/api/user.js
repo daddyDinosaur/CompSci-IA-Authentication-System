@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const app = require('../../app');
 const { checkApiKey, isAdmin } = require('./security');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
@@ -178,7 +179,7 @@ router.post('/saveUser', checkApiKey, isAdmin, async (req, res) => {
         user.username = username;
         user.email = email;
         user.password = await bcrypt.hash(password, 10); 
-        user.role = role;
+        user.role = role.toUpperCase();
 
         await user.save(); 
 
