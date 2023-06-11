@@ -141,6 +141,7 @@ $(document).ready(function() {
 
     $('.delete-key').click(function() {
         const keyId = $(this).data('key-id');
+        console.log("del")
         console.log(keyId);
         $.ajax({
             url: "/api/genkey/delKey",
