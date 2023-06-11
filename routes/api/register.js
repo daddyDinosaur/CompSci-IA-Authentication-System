@@ -87,11 +87,10 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
         const duration = foundKey.duration;
         const unit = duration.slice(-1).toUpperCase();
         const value = parseInt(duration);
-        const newExpiryDate = new Date();
         
         if (durationUnits.hasOwnProperty(unit)) {
             const durationInMs = value * durationUnits[unit];
-            newExpiryDate = new Date(Date.now() + durationInMs);
+            const newExpiryDate = new Date(Date.now() + durationInMs);
         } else {
             return res.status(401).json({ error: 'Invalid Duration on Key' });
         }
