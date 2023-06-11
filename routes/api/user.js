@@ -36,13 +36,7 @@ router.post('/delUser', checkApiKey, isAdmin, async (req, res) => {
         return res.status(400).json({ message: 'Please provide either a username or an id of the user to delete' });
     }
 
-    let query = {};
-
-    if(id){
-        query._id = id;
-    } else if(username) {
-        query.username = username;
-    }
+    const query = id ? { _id: id } : { username: username };
     
     try {
         const user = await User.findOneAndDelete(query, {useFindAndModify: false});
