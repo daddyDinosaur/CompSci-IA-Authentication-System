@@ -19,7 +19,7 @@ body, .flex-container {
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
     align-items: center;
 }
 
@@ -44,6 +44,7 @@ body, .flex-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 1em;
 }
 
 .input-field, 
