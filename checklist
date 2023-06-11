@@ -1,3 +1,4 @@
+section B checklist:
 <!-- 1. Accept request to validate emails and passwords -->
 <!-- 2. Return a response as validated or invalidated	 -->
 <!-- 3. User registration with required fields: license, username, email, and password	 -->
@@ -17,6 +18,39 @@
 17. API should provide basic information about the user when logging in	 -->
 <!-- 18. API should only perform rank-specific actions (according to user's role permissions)	 -->
 
+section a checklist:
+<!-- License authentication server will:
+Accept request to validate username and passwords
+Return a response as a validated or invalidated -->
+<!-- User registration
+Require license
+Require username
+Require email
+Require Password
+Salt & Hash the passwords
+Different roles (Administrators / Users) with ranging permissions
+Generate licenses
+Pro and Lite subscriptions -->
+<!-- View all users
+View last login date
+View last login IP
+View registry date
+View current binded hardware id
+View subscriptions -->
+<!-- Edit users
+Edit password
+Edit username
+Edit email -->
+<!-- Reset stored hardware ID
+Adjust subscriptions
+Ban users/licenses
+Delete users/licenses
+Expired Users (No subscriptions)
+Purge all users
+A queryable api that will perform most if not all of the functions that administrators can do
+Must be logged in and authorized
+Return valid / invalid
+Basic information about user -->
 
 to-do:
 <!-- reset hwid -->
@@ -31,4 +65,3 @@ to-do:
     view all keys ofc -->
 <!-- button to delete all users -->
 <!-- button to delete all expired -->
-
