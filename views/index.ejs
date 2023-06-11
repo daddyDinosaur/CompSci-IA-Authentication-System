@@ -22,14 +22,18 @@
         <h1 class="title centered-text">Users</h1>
         <div class="form-container">
             <form action="/api/register/admin" method="post">
-                <input class="input-field" type="text" name="username" placeholder="Username">
-                <input class="input-field" type="text" name="email" placeholder="Email">
-                <input class="input-field" type="text" name="password" placeholder="Password">
-                <input class="input-field" type="text" name="key" placeholder="Key">
-                <input class="input-field" type="text" name="role" placeholder="Role">
+                <div class="input-row">
+                    <input class="input-field" type="text" name="username" placeholder="Username">
+                    <input class="input-field" type="text" name="email" placeholder="Email">
+                    <input class="input-field" type="text" name="password" placeholder="Password">
+                </div>
+                <div class="input-row">
+                    <input class="input-field" type="text" name="key" placeholder="Key">
+                    <input class="input-field" type="text" name="role" placeholder="Role">
+                </div>
                 <button class="submit-button" type="submit">Add User</button>
             </form>  
-        </div> 
+        </div>        
         <table>
             <thead>
                 <tr>
