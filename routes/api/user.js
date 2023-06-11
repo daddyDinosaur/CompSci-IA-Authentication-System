@@ -71,7 +71,7 @@ router.get('/delExpired', checkApiKey, isAdmin, async (req, res) => {
 
 router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
     try {
-        const { id, username } = req.body;
+        const { id, username, banReason } = req.body;
 
         if (!id && !username) {
             return res.status(400).json({ error: 'Missing id or username' });
@@ -84,7 +84,14 @@ router.post('/ban', checkApiKey, isAdmin, async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
+        if (banReason) {
+            user.banReason = banReason;
+        } else if (!user.banned) {
+            user.banReason = ""; 
+        }
+
         user.banned = !user.banned;
+        
         await user.save();
 
         res.status(200).json({ success: 'User ban status toggled', userId: user._id, username: user.username, banned: user.banned });

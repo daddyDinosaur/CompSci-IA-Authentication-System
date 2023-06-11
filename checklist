@@ -6,8 +6,8 @@
 <!-- 6. Generate licenses for Pro and Lite subscriptions	 -->
 7. View all users and their related information	
 8. Edit user's profile: username, email, and password	
-9. Reset stored hardware ID for a user	
-10. Ban or unban users
+<!-- 9. Reset stored hardware ID for a user	 -->
+<!-- 10. Ban or unban users -->
 <!-- 11. Delete users/licenses	 -->
 <!-- 12. Delete expired users with no active subscriptions	 -->
 <!-- 13. Purge all users (for Administrators only)	 -->
@@ -23,7 +23,7 @@ key viewing page
 
 
 to-do:
-reset hwid
+<!-- reset hwid -->
 extra info popup
     edit and view
 <!-- delete with no sub keys -->
