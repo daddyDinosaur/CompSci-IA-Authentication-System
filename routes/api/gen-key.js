@@ -9,13 +9,22 @@ const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
 router.post('/', checkApiKey, isAdmin, async (req, res) => {
     try {
-        if (!req.body.pattern) {
+        if (!req.body.pattern || !req.body.duration || !req.body.type) {
             return res.status(401).json({ error: 'Missing Data' });
         }
+
         const pattern = req.body.pattern;
+        let duration = req.body.duration;
+        const type = req.body.type;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let newString = "";
-        
+
+        if (!['lite', 'pro'].includes(type.toLowerCase())) {
+            return res.status(400).json({ error: 'Invalid type. Only "lite" or "pro" are allowed.' });
+        }
+
+        duration = duration.toLowerCase();
+
         for (let i = 0; i < pattern.length; i++) {
             if (pattern[i] === "X") {
                 newString += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -23,11 +32,11 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
                 newString += pattern[i];
             }
         }
-        
-        const daprog = new SubKey({ key: newString });
+
+        const daprog = new SubKey({ key: newString, duration: duration, type: type });
         await daprog.save();
-        
-        const encrpyUsers = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: '1h' });
+
+        const encrpyUsers = jwt.sign({GeneratedKey: newString}, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256' , expiresIn: duration });
 
         res.json(encrpyUsers);
     } catch (err) {
@@ -35,6 +44,7 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
         res.status(500).json({ error: 'An error occurred' });
     }
 });
+
 
 router.post('/delAll', checkApiKey, isAdmin, async (req, res) => {
     try {
