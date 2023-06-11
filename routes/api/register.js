@@ -5,6 +5,14 @@ const { User } = require('../../models/user');
 const { SubKey } = require('../../models/subKey');
 const { checkApiKey, isAdmin } = require('../api/security');
 
+const durationUnits = {
+    'H': 60 * 60 * 1000,
+    'D': 24 * 60 * 60 * 1000,
+    'W': 7 * 24 * 60 * 60 * 1000,
+    'M': 30 * 24 * 60 * 60 * 1000,
+    'Y': 365.25 * 24 * 60 * 60 * 1000
+};
+
 router.post('/', async (req, res) => {
     try {
         const { username, email, password, key } = req.body;
@@ -24,6 +32,18 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ error: 'Invalid Key' });
         }
 
+        const duration = foundKey.duration;
+        const unit = duration.slice(-1).toUpperCase();
+        const value = parseInt(duration);
+        let newExpiryDate;
+        
+        if (durationUnits.hasOwnProperty(unit)) {
+            const durationInMs = value * durationUnits[unit];
+            newExpiryDate = new Date(Date.now() + durationInMs);
+        } else {
+            return res.status(401).json({ error: 'Invalid Duration on Key' });
+        }
+
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
         const bannedIP = await User.findOne({$and: [{ lastIP: ip }, { banned: true }]});
@@ -41,6 +61,8 @@ router.post('/', async (req, res) => {
             registered: Date.now(),
             keys: key,
             role: "USER",
+            subscription: foundKey.type,
+            expiry: newExpiryDate,
         });
 
         await SubKey.findOneAndRemove({ key });
@@ -76,14 +98,7 @@ router.post('/admin', checkApiKey, isAdmin, async (req, res) => {
         if (!foundKey) {
             return res.status(401).json({ error: 'Invalid Key' });
         }
-        
-        const durationUnits = {
-            'H': 60 * 60 * 1000,
-            'D': 24 * 60 * 60 * 1000,
-            'W': 7 * 24 * 60 * 60 * 1000,
-            'M': 30 * 24 * 60 * 60 * 1000,
-            'Y': 365.25 * 24 * 60 * 60 * 1000
-        };
+    
         const duration = foundKey.duration;
         const unit = duration.slice(-1).toUpperCase();
         const value = parseInt(duration);
