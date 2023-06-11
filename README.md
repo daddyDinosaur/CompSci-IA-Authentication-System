@@ -27,3 +27,7 @@ https://blog.logrocket.com/password-hashing-node-js-bcrypt/
 https://mongoosejs.com/docs/api/querycursor.html
 
 https://stackoverflow.com/questions/56741578/mongoose-cursors-with-many-documents-and-load
+
+https://stackoverflow.com/questions/32811510/mongoose-findoneandupdate-doesnt-return-updated-document
+
+https://mongoosejs.com/docs/tutorials/findoneandupdate.html
