@@ -31,3 +31,8 @@ https://stackoverflow.com/questions/56741578/mongoose-cursors-with-many-document
 https://stackoverflow.com/questions/32811510/mongoose-findoneandupdate-doesnt-return-updated-document
 
 https://mongoosejs.com/docs/tutorials/findoneandupdate.html
+
+https://www.w3schools.com/xml/ajax_intro.asp
+
+https://www.geeksforgeeks.org/how-to-make-ajax-call-from-javascript/
+
