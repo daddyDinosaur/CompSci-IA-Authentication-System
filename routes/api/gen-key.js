@@ -13,7 +13,7 @@ router.post('/', checkApiKey, isAdmin, async (req, res) => {
             return res.status(401).json({ error: 'Missing Data' });
         }
 
-        const pattern = req.body.pattern;
+        const pattern = req.body.pattern.toUpperCase();
         let duration = req.body.duration;
         const type = req.body.type;
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
