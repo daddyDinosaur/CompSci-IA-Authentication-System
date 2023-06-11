@@ -75,11 +75,12 @@ body, .flex-container {
 }
 
 .menu-button {
-    position: absolute;
-    flex-grow: 0;
     padding: 10px 50px;
+    flex-grow: 0;
+    position: fixed;
     top: 10px;
     left: 10px;
+    z-index: 10;
 }
 
 table {
