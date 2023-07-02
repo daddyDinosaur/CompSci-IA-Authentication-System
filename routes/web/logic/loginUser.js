@@ -8,17 +8,17 @@ const loginUser = async (email, password, ip) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
-        return res.status(401).json({ error: 'Invalid Email' });
+        return { status: 409, message: 'Invalid Email', error: true };
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
-        return res.status(401).json({ error: 'Invalid Pass' });
+        return { status: 409, message: 'Invalid Pass', error: true };
     }
 
     if (user.banned) {
-        return res.status(401).json({ unauthorized: 'Banned' });
+        return { status: 403, message: 'Banned', error: true };
     }
 
     if (user.expiry && new Date(user.expiry) < Date.now()) {
@@ -39,6 +39,8 @@ const loginUser = async (email, password, ip) => {
     const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
     res.cookie('authToken', token, { httpOnly: true });
+
+    return { status: 200, message: 'User logged in successfully', error: false };
 }
 
 module.exports = loginUser;
