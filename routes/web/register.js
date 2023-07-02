@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/user');
 const { SubKey } = require('../../models/subKey');
-const registerUser = require('logic/registerUser');
+const registerUser = require('../web/logic/registerUser');
 
 const durationUnits = {
     'H': 60 * 60 * 1000,
