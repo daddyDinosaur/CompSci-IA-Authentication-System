@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const { User } = require('../../models/user');
-const { SubKey } = require('../../models/subKey');
 const registerUser = require('../web/logic/registerUser');
 
 const durationUnits = {
