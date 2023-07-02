@@ -62,6 +62,12 @@ const startApp = async () => {
   }
 }
 
+app.use(function (err, req, res, next) {
+  console.error(err.stack) 
+  res.status(500).send('An error occurred!')
+})
+
+
 startApp();
 
 module.exports = app;
