@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
     }
 
     try {
-        const loggedIn = await loginUser(email, password, req.ip);
+        const loggedIn = await loginUser(res, email, password, req.ip);
 
         if (loggedIn.error) {
             res.status(loggedIn.status).json({ error: loggedIn.message });
