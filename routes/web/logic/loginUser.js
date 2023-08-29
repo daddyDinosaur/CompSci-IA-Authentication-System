@@ -44,11 +44,7 @@ const loginUser = async (email, password, ip) => {
         { useFindAndModify: false }
     );
 
-    const token = jwt.sign(
-        payload,
-        { key: privateKey, passphrase: process.env.PASSPHRASE },
-        { algorithm: 'RS256', expiresIn: '1h' }
-    );
+    const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
 
     res.cookie('authToken', token, { httpOnly: true });
 
