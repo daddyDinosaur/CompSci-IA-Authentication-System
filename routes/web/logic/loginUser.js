@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const privateKey = fs.readFileSync(process.env.PRIV_KEY_PATH, 'utf8');
 
-const loginUser = async (email, password, ip) => {
+const loginUser = async (res, email, password, ip) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
