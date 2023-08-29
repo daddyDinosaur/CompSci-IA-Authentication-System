@@ -22,7 +22,11 @@ const loginUser = async (email, password, ip) => {
     }
 
     if (user.expiry && new Date(user.expiry) < Date.now()) {
-        user = await User.findOneAndUpdate({ _id: user._id }, { $set: { expiry: null, subscription: null } }, { new: true }, {useFindAndModify: false});
+        user = await User.findOneAndUpdate(
+            { _id: user._id },
+            { $set: { expiry: null, subscription: null } },
+            { new: true, useFindAndModify: false }
+        );
     }
 
     const payload = {
@@ -34,9 +38,17 @@ const loginUser = async (email, password, ip) => {
         hwid: user.hwid,
     };
 
-    await User.findOneAndUpdate({ _id: user._id }, { $set: { lastLogin: Date.now(), lastIP: ip } }, {useFindAndModify: false});
+    await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: { lastLogin: Date.now(), lastIP: ip } },
+        { useFindAndModify: false }
+    );
 
-    const token = jwt.sign(payload, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
+    const token = jwt.sign(
+        payload,
+        { key: privateKey, passphrase: process.env.PASSPHRASE },
+        { algorithm: 'RS256', expiresIn: '1h' }
+    );
 
     res.cookie('authToken', token, { httpOnly: true });
 
