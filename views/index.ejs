@@ -32,7 +32,7 @@
                     <select id="role" name="role" class="input-field-special">
                         <option value="USER" class="red-text">USER</option>
                         <option value="ADMIN" class="red-text">ADMIN</option>
-                    </select>                    
+                    </select>
                     <button class="submit-button" type="submit">Add User</button>
                 </div>
             </form>
@@ -78,9 +78,13 @@
         <div class="buttons-container">
             <form id="create-key-form" action="/api/genkey" method="post">
                 <div class="input-row">
-                    <input class="input-field" type="text" id="pattern" name="pattern" placeholder="Pattern">
-                    <input class="input-field" type="text" id="duration" name="duration" placeholder="Duration">
-                    <input class="input-field" type="text" id="type" name="type" placeholder="Type">
+                    <input class="input-field" type="text" id="pattern" name="pattern" placeholder="Pattern" title="X's get replaced with the key, everything else stays the same">
+                    <input class="input-field" type="text" id="duration" name="duration" placeholder="Duration" title="M(onth) H(our) D(ay) W(eek) Y(ear)">
+                    <label for="type" class="red-text">Type:</label>
+                    <select id="type" name="type" class="input-field-special">
+                        <option value="PRO" class="red-text">PRO</option>
+                        <option value="LITE" class="red-text">LITE</option>
+                    </select>
                 </div>
             </form>
             <button class="submit-button" id="create-key">Create Key</button>
