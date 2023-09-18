@@ -130,15 +130,18 @@ router.post('/resetHwid', checkApiKey, isAdmin, async (req, res) => {
 router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
     try {
         const { id } = req.body;
+        console.log("we made it")
 
         if (!id) {
             return res.status(400).json({ error: 'Missing user ID' });
+            console.log("no id")
         }
 
         const user = await User.findById(id);
 
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
+            console.log("user not found")
         }
 
         const encryptedUsers = jwt.sign({
