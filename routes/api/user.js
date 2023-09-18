@@ -137,12 +137,18 @@ router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
             console.log("no id")
         }
 
+        console.log("a")
+
         const user = await User.findById(id);
+
+        console.log("b")
 
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
             console.log("user not found")
         }
+
+        console.log("c")
 
         const encryptedUsers = jwt.sign({
             _id: user._id,
@@ -159,6 +165,7 @@ router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
             lastLogin: user.lastLogin,
             lastIP: user.lastIP,
         }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
+        console.log("huh")
         res.json(encryptedUsers);
     } catch (err) {
         console.error(err);
