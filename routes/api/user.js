@@ -166,6 +166,7 @@ router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
             lastIP: user.lastIP,
         }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
         console.log("huh")
+        console.log(user.username)
         res.json(encryptedUsers);
     } catch (err) {
         console.error(err);
