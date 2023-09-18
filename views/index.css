@@ -62,6 +62,10 @@ body, .flex-container {
     cursor: pointer;
 }
 
+.red-text {
+    color: #c3073f;
+}
+
 .input-field-special, 
 .more-info-special {
     margin: 0 0.5em;
@@ -72,6 +76,19 @@ body, .flex-container {
     background-color: #1a1a1d;
     color: #fff;
     cursor: pointer;
+}
+
+.input-field-special select {
+    background-color: #1a1a1d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-field-special select option {
+    background-color: #1a1a1d;
+    color: #fff;
 }
 
 .menu-button {
