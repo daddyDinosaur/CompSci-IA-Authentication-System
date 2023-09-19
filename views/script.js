@@ -54,7 +54,7 @@ $(document).ready(function() {
                     <input class="input-field-special white-text" type="text" name="username" value="${user.username}">
                     <input class="input-field-special white-text" type="text" name="email" value="${user.email}">
                     <input class="input-field-special white-text" type="password" name="password" placeholder="New Password">
-                    <input class="input-field-special white-text" type="text" name="role" value="${user.role.toUpperCase()}">
+                    <input class="input-field-special white-text" type="text" name="role" value="${user.role}">
                     <button id="update-button" type="button" class="more-info-special white-text">Update User</button>
                     <button id="hwid-button" type="button" class="more-info-special white-text">Reset HWID</button>
                     <button id="ban-toggle-button" type="button" class="more-info-special white-text">${user.banned ? 'Unban' : 'Ban'} User</button>
