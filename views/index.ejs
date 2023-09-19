@@ -55,20 +55,20 @@
                 </tr>
             </thead>
             <tbody>
-              <% users.forEach((user) => { %>
-                  <tr>
-                      <td><%= user.username %></td>
-                      <td><%= user.email %></td>
-                      <td><%= new Date(user.registered).toDateString() %></td>
-                      <td><%= new Date(user.lastLogin).toDateString() %></td>
-                      <td><%= user.id %></td>
-                      <td>
-                        <input type="hidden" name="userIdStorage" value="<%= user._id %>">
-                        <button id="moreInfobutt" name="moreInfo" class="more-info" data-user-id="<%= user._id %>">More Info</button>
-                    </td>                    
-                  </tr>
-              <% }); %>
-          </tbody>
+                <% users.forEach((user) => { %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                        <td><%= new Date(user.registered).toDateString() %></td>
+                        <td><%= new Date(user.lastLogin).toDateString() %></td>
+                        <td><%= user.id %></td>
+                        <td>
+                          <input type="hidden" name="userIdStorage" value="<%= user._id %>">
+                          <button class="more-info moreInfobutt" name="moreInfo" data-user-id="<%= user._id %>">More Info</button>
+                      </td>                    
+                    </tr>
+                <% }); %>
+            </tbody>
         </table>
     </div>
 
