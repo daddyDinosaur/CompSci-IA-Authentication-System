@@ -141,7 +141,7 @@ router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        const userInfoSign = {
+        const encryptedUsers = jwt.sign({
             _id: user._id,
             username: user.username,
             email: user.email,
@@ -155,10 +155,9 @@ router.post('/getUserInfo', checkApiKey, isAdmin, async (req, res) => {
             registered: user.registered,
             lastLogin: user.lastLogin,
             lastIP: user.lastIP,
-        };
-        const encryptedUsers = jwt.sign(userInfoSign, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
-        console.log(userInfoSign);
-        res.json(encryptedUsers);
+        }, { key: privateKey, passphrase: process.env.PASSPHRASE }, { algorithm: 'RS256', expiresIn: '1h' });
+        
+        res.json(user.username);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
